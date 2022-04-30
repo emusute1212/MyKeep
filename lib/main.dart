@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mykeep/data/db/my_keep_database.dart';
 
 void main() {
+  final database = MyKeepDatabase();
   runApp(const MyApp());
 }
 
