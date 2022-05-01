@@ -51,7 +51,7 @@ dependencies:
   metadata_fetch: ^0.4.1
 
   # freezed
-  freezed: ^2.0.2
+  freezed_annotation: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +67,9 @@ dev_dependencies:
   # Drift(Moor)
   drift_dev: ^1.5.2
   build_runner: ^2.1.8
+
+  # freezed
+  freezed: ^2.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
