@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 
 part 'my_keep_database.g.dart';
 
@@ -21,6 +21,16 @@ class MyKeepDatabase extends _$MyKeepDatabase {
 
   @override
   int get schemaVersion => 1;
+
+  Stream<List<StockItem>> observe() {
+    return select(stockItems).watch();
+  }
+
+  Future<int> addStockItem(StockItemsCompanion data) =>
+      into(stockItems).insert(data);
+
+  Future deleteStockItem(int id) =>
+      (delete(stockItems)..where((it) => it.id.equals(id))).go();
 }
 
 LazyDatabase _openConnection() {
