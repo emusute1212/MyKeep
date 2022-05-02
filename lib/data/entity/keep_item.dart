@@ -5,6 +5,7 @@ part 'keep_item.freezed.dart';
 @freezed
 class KeepItem with _$KeepItem {
   const factory KeepItem({
+    required int id,
     required String title,
     required String? imageUrl,
     required String targetUrl,
