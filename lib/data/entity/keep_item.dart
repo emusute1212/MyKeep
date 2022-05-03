@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'keep_item.freezed.dart';
+part 'keep_item.g.dart';
 
 @freezed
 class KeepItem with _$KeepItem {
