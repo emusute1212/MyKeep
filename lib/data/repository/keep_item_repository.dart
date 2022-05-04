@@ -15,14 +15,13 @@ class KeepItemRepository {
         .map((it) => it.map((e) => e.toKeepItem()).toList());
   }
 
-  Future<void> addKeepItem(
-      String title, String? imageUrl, String targetUrl) async {
+  Future<void> addKeepItem(String title, String? imageUrl, String targetUrl,
+      DateTime createAt) async {
     StockItemsCompanion targetItem = StockItemsCompanion(
         title: Value(title),
         imageUrl: Value(imageUrl),
-      targetUrl: Value(targetUrl),
-      createAt: Value(DateTime.now())
-    );
+        targetUrl: Value(targetUrl),
+        createAt: Value(createAt));
     await database.addStockItem(targetItem);
   }
 

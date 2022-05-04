@@ -1,7 +1,6 @@
 import 'package:drift/native.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mykeep/data/db/my_keep_database.dart';
-import 'package:mykeep/data/entity/keep_item.dart';
 import 'package:mykeep/data/repository/keep_item_repository.dart';
 
 void main() {
@@ -14,8 +13,9 @@ void main() {
   });
 
   test('アイテムを追加・見るテスト', () async {
+    var currentDate = DateTime.now();
     await keepItemRepository.addKeepItem(
-        "test1", "https://example.com/images", "https://example.com");
+        "test1", "https://example.com/images", "https://example.com", currentDate);
 
     var result = await keepItemRepository.observeKeepItems().first;
 
@@ -25,8 +25,9 @@ void main() {
     expect(result.first.targetUrl, "https://example.com");
   });
   test('アイテムを削除するテスト', () async {
+    var currentDate = DateTime.now();
     await keepItemRepository.addKeepItem(
-        "test1", "https://example.com/images", "https://example.com");
+        "test1", "https://example.com/images", "https://example.com", currentDate);
 
     var result = await keepItemRepository.observeKeepItems().first;
 
