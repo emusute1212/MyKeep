@@ -3,7 +3,7 @@ import 'package:mykeep/data/entity/ogp_entity.dart';
 
 class OgpRepository {
   Future<OgpEntity> loadOgpEntity(String url) async {
-    var data = await MetadataFetch.extract(url);
+    final data = await MetadataFetch.extract(url);
     if(data == null) {
       return OgpEntity.empty;
     }

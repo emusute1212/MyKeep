@@ -4,20 +4,20 @@ import 'package:mykeep/data/db/my_keep_database.dart';
 import 'package:mykeep/data/repository/keep_item_repository.dart';
 
 void main() {
-  late MyKeepDatabase database;
-  late KeepItemRepository keepItemRepository;
+  late final MyKeepDatabase _database;
+  late final KeepItemRepository _keepItemRepository;
 
   setUp(() {
-    database = MyKeepDatabase.withQueryExecutor(NativeDatabase.memory());
-    keepItemRepository = KeepItemRepository(database);
+    _database = MyKeepDatabase.withQueryExecutor(NativeDatabase.memory());
+    _keepItemRepository = KeepItemRepository(_database);
   });
 
   test('アイテムを追加・見るテスト', () async {
-    var currentDate = DateTime.now();
-    await keepItemRepository.addKeepItem(
-        "test1", "https://example.com/images", "https://example.com", currentDate);
+    final currentDate = DateTime.now();
+    await _keepItemRepository.addKeepItem("test1", "https://example.com/images",
+        "https://example.com", currentDate);
 
-    var result = await keepItemRepository.observeKeepItems().first;
+    final result = await _keepItemRepository.observeKeepItems().first;
 
     expect(result.length, 1);
     expect(result.first.title, "test1");
@@ -25,20 +25,20 @@ void main() {
     expect(result.first.targetUrl, "https://example.com");
   });
   test('アイテムを削除するテスト', () async {
-    var currentDate = DateTime.now();
-    await keepItemRepository.addKeepItem(
-        "test1", "https://example.com/images", "https://example.com", currentDate);
+    final currentDate = DateTime.now();
+    await _keepItemRepository.addKeepItem("test1", "https://example.com/images",
+        "https://example.com", currentDate);
 
-    var result = await keepItemRepository.observeKeepItems().first;
+    final result = await _keepItemRepository.observeKeepItems().first;
 
-    await keepItemRepository.deleteKeepItem(result.first); // 日付はいつのものでも大丈夫のはず
+    await _keepItemRepository.deleteKeepItem(result.first);
 
-    var resultAfter = await keepItemRepository.observeKeepItems().first;
+    final resultAfter = await _keepItemRepository.observeKeepItems().first;
 
     expect(resultAfter.length, 0);
   });
 
   tearDown(() async {
-    await database.close();
+    await _database.close();
   });
 }

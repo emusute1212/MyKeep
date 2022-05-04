@@ -5,27 +5,27 @@ import 'package:mykeep/utils/stock_items_ext.dart';
 import '../db/my_keep_database.dart';
 
 class KeepItemRepository {
-  final MyKeepDatabase database;
+  final MyKeepDatabase _database;
 
-  KeepItemRepository(this.database);
+  KeepItemRepository(this._database);
 
   Stream<List<KeepItem>> observeKeepItems() {
-    return database
+    return _database
         .observe()
         .map((it) => it.map((e) => e.toKeepItem()).toList());
   }
 
   Future<void> addKeepItem(String title, String? imageUrl, String targetUrl,
       DateTime createAt) async {
-    StockItemsCompanion targetItem = StockItemsCompanion(
+    final targetItem = StockItemsCompanion(
         title: Value(title),
         imageUrl: Value(imageUrl),
         targetUrl: Value(targetUrl),
         createAt: Value(createAt));
-    await database.addStockItem(targetItem);
+    await _database.addStockItem(targetItem);
   }
 
   Future<void> deleteKeepItem(KeepItem target) async {
-    await database.deleteStockItem(target.id);
+    await _database.deleteStockItem(target.id);
   }
 }
