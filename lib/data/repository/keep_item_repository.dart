@@ -13,17 +13,17 @@ class KeepItemRepository {
         .map((it) => it.map((e) => e.toKeepItem()).toList());
   }
 
-  void addKeepItem(String title, String? imageUrl, String targetUrl) {
+  Future<void> addKeepItem(String title, String? imageUrl, String targetUrl) async {
     StockItemsCompanion targetItem = StockItemsCompanion(
       title: Value(title),
       imageUrl: Value(imageUrl),
       targetUrl: Value(targetUrl),
       createAt: Value(DateTime.now())
     );
-    database.addStockItem(targetItem);
+    await database.addStockItem(targetItem);
   }
 
-  void deleteKeepItem(KeepItem target) {
-    database.deleteStockItem(target.id);
+  Future<void> deleteKeepItem(KeepItem target) async {
+    await database.deleteStockItem(target.id);
   }
 }
