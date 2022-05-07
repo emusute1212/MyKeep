@@ -1,8 +1,12 @@
 import 'package:drift/drift.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
 import 'package:mykeep/utils/stock_items_ext.dart';
 
 import '../db/my_keep_database.dart';
+
+final keepItemRepositoryProvider =
+    Provider((ref) => KeepItemRepository(ref.read(myKeepDatabaseProvider)));
 
 class KeepItemRepository {
   final MyKeepDatabase _database;

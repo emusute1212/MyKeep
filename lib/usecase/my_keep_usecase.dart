@@ -1,6 +1,14 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
 import 'package:mykeep/data/repository/keep_item_repository.dart';
 import 'package:mykeep/data/repository/ogp_repository.dart';
+
+final myKeepUsecaseyProvider = Provider((ref) {
+  final Reader reader = ref.read;
+
+  return MyKeepUsecase(
+      reader(keepItemRepositoryProvider), reader(ogpRepositoryProvider));
+});
 
 class MyKeepUsecase {
   final KeepItemRepository _keepItemRepository;
