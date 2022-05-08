@@ -7,11 +7,7 @@ part of 'adding_state.dart';
 // **************************************************************************
 
 _$_AddingState _$$_AddingStateFromJson(Map<String, dynamic> json) =>
-    _$_AddingState(
-      isSaved: json['isSaved'] as bool,
-    );
+    _$_AddingState();
 
 Map<String, dynamic> _$$_AddingStateToJson(_$_AddingState instance) =>
-    <String, dynamic>{
-      'isSaved': instance.isSaved,
-    };
+    <String, dynamic>{};

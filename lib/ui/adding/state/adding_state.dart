@@ -6,9 +6,7 @@ part 'adding_state.g.dart';
 
 @freezed
 class AddingState with _$AddingState {
-  const factory AddingState({
-    required bool isSaved,
-  }) = _AddingState;
+  const factory AddingState() = _AddingState;
 
   factory AddingState.fromJson(Map<String, Object?> json) =>
       _$AddingStateFromJson(json);

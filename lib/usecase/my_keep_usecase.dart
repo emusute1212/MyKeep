@@ -16,7 +16,7 @@ class MyKeepUsecase {
 
   MyKeepUsecase(this._keepItemRepository, this._ogpRepository);
 
-  Stream<void> observeKeepItem() {
+  Stream<List<KeepItem>> observeKeepItem() {
     return _keepItemRepository.observeKeepItems();
   }
 

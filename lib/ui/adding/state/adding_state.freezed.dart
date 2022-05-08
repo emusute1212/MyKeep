@@ -20,12 +20,7 @@ AddingState _$AddingStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AddingState {
-  bool get isSaved => throw _privateConstructorUsedError;
-
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AddingStateCopyWith<AddingState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -33,7 +28,6 @@ abstract class $AddingStateCopyWith<$Res> {
   factory $AddingStateCopyWith(
           AddingState value, $Res Function(AddingState) then) =
       _$AddingStateCopyWithImpl<$Res>;
-  $Res call({bool isSaved});
 }
 
 /// @nodoc
@@ -43,28 +37,13 @@ class _$AddingStateCopyWithImpl<$Res> implements $AddingStateCopyWith<$Res> {
   final AddingState _value;
   // ignore: unused_field
   final $Res Function(AddingState) _then;
-
-  @override
-  $Res call({
-    Object? isSaved = freezed,
-  }) {
-    return _then(_value.copyWith(
-      isSaved: isSaved == freezed
-          ? _value.isSaved
-          : isSaved // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$AddingStateCopyWith<$Res>
-    implements $AddingStateCopyWith<$Res> {
+abstract class _$AddingStateCopyWith<$Res> {
   factory _$AddingStateCopyWith(
           _AddingState value, $Res Function(_AddingState) then) =
       __$AddingStateCopyWithImpl<$Res>;
-  @override
-  $Res call({bool isSaved});
 }
 
 /// @nodoc
@@ -76,53 +55,30 @@ class __$AddingStateCopyWithImpl<$Res> extends _$AddingStateCopyWithImpl<$Res>
 
   @override
   _AddingState get _value => super._value as _AddingState;
-
-  @override
-  $Res call({
-    Object? isSaved = freezed,
-  }) {
-    return _then(_AddingState(
-      isSaved: isSaved == freezed
-          ? _value.isSaved
-          : isSaved // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$_AddingState implements _AddingState {
-  const _$_AddingState({required this.isSaved});
+  const _$_AddingState();
 
   factory _$_AddingState.fromJson(Map<String, dynamic> json) =>
       _$$_AddingStateFromJson(json);
 
   @override
-  final bool isSaved;
-
-  @override
   String toString() {
-    return 'AddingState(isSaved: $isSaved)';
+    return 'AddingState()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _AddingState &&
-            const DeepCollectionEquality().equals(other.isSaved, isSaved));
+        (other.runtimeType == runtimeType && other is _AddingState);
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(isSaved));
-
-  @JsonKey(ignore: true)
-  @override
-  _$AddingStateCopyWith<_AddingState> get copyWith =>
-      __$AddingStateCopyWithImpl<_AddingState>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   Map<String, dynamic> toJson() {
@@ -131,15 +87,8 @@ class _$_AddingState implements _AddingState {
 }
 
 abstract class _AddingState implements AddingState {
-  const factory _AddingState({required final bool isSaved}) = _$_AddingState;
+  const factory _AddingState() = _$_AddingState;
 
   factory _AddingState.fromJson(Map<String, dynamic> json) =
       _$_AddingState.fromJson;
-
-  @override
-  bool get isSaved => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$AddingStateCopyWith<_AddingState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
