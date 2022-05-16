@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:mykeep/data/db/my_keep_database.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/mystock/my_stock_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    // For widgets to be able to read providers, we need to wrap the entire
+    // application in a "ProviderScope" widget.
+    // This is where the state of our providers will be stored.
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

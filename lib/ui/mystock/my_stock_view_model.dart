@@ -6,12 +6,12 @@ import '../../data/entity/keep_item.dart';
 
 final myStockViewModelProvider =
     StateNotifierProvider<MyStockViewModel, MyStockState>(
-        (ref) => MyStockViewModel(ref.read, ref.read(myKeepUsecaseyProvider)));
+        (ref) => MyStockViewModel(ref.read(myKeepUsecaseyProvider)));
 
 class MyStockViewModel extends StateNotifier<MyStockState> {
   final MyKeepUsecase _usecase;
 
-  MyStockViewModel(state, this._usecase) : super(state);
+  MyStockViewModel(this._usecase) : super(const MyStockState(items: []));
 
   void init() {
     _usecase.observeKeepItem().listen((event) {
