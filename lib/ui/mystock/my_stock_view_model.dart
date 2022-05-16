@@ -1,14 +1,14 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mykeep/ui/mystock/state/mystock_state.dart';
+import 'package:mykeep/ui/mystock/state/my_stock_state.dart';
 import 'package:mykeep/usecase/my_keep_usecase.dart';
 
 import '../../data/entity/keep_item.dart';
 
 final myStockViewModelProvider =
-    StateNotifierProvider<MyStockViewModel, MystockState>(
+    StateNotifierProvider<MyStockViewModel, MyStockState>(
         (ref) => MyStockViewModel(ref.read, ref.read(myKeepUsecaseyProvider)));
 
-class MyStockViewModel extends StateNotifier<MystockState> {
+class MyStockViewModel extends StateNotifier<MyStockState> {
   final MyKeepUsecase _usecase;
 
   MyStockViewModel(state, this._usecase) : super(state);

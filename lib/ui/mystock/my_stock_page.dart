@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mykeep/ui/mystock/mystock_view_model.dart';
-import 'package:mykeep/ui/mystock/state/mystock_state.dart';
+import 'package:mykeep/ui/mystock/my_stock_view_model.dart';
+import 'package:mykeep/ui/mystock/state/my_stock_state.dart';
 import 'package:mykeep/ui/mystock/stock_element.dart';
 
-class StockImageView extends HookConsumerWidget {
-  const StockImageView({
+class MyStockPage extends HookConsumerWidget {
+  const MyStockPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final MyStockViewModel mystockViewModel =
+    final MyStockViewModel myStockViewModel =
         ref.read(myStockViewModelProvider.notifier);
-    final MystockState state = ref.watch(myStockViewModelProvider);
+    final MyStockState state = ref.watch(myStockViewModelProvider);
     return GridView.builder(
       itemCount: state.items.length,
       itemBuilder: (_, index) {
