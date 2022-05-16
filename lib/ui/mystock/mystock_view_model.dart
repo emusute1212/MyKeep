@@ -4,8 +4,9 @@ import 'package:mykeep/usecase/my_keep_usecase.dart';
 
 import '../../data/entity/keep_item.dart';
 
-final myStockViewModelProvider = StateNotifierProvider(
-    (ref) => MyStockViewModel(ref.read, ref.read(myKeepUsecaseyProvider)));
+final myStockViewModelProvider =
+    StateNotifierProvider<MyStockViewModel, MystockState>(
+        (ref) => MyStockViewModel(ref.read, ref.read(myKeepUsecaseyProvider)));
 
 class MyStockViewModel extends StateNotifier<MystockState> {
   final MyKeepUsecase _usecase;

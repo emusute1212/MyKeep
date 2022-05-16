@@ -2,8 +2,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/state/adding_state.dart';
 import 'package:mykeep/usecase/my_keep_usecase.dart';
 
-final addingViewModelProvider = StateNotifierProvider(
-    (ref) => AddingViewModel(ref.read, ref.read(myKeepUsecaseyProvider)));
+final addingViewModelProvider =
+    StateNotifierProvider<AddingViewModel, AddingState>(
+        (ref) => AddingViewModel(ref.read, ref.read(myKeepUsecaseyProvider)));
 
 class AddingViewModel extends StateNotifier<AddingState> {
   final MyKeepUsecase _usecase;
