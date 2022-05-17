@@ -23,7 +23,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyStockPage(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Demo Home Page'),
+        ),
+        body: const MyStockPage(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
+        ),
+      ),
     );
   }
 }
