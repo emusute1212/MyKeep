@@ -21,7 +21,8 @@ class StockElement extends HookConsumerWidget {
                 Image.network(
                   item.imageUrl ?? "",
                 ),
-                Padding(
+                Container(
+                  width: double.infinity,
                   padding: const EdgeInsets.only(
                     top: 8,
                     left: 10,
@@ -32,14 +33,15 @@ class StockElement extends HookConsumerWidget {
                     item.title,
                     style: const TextStyle(
                       fontFamily: 'SFProDisplay',
-                      color: Color(0x00000000),
+                      color: Color(0xFF000000),
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                Padding(
+                Container(
+                  width: double.infinity,
                   padding: const EdgeInsets.only(
                     top: 2,
                     left: 10,
@@ -49,7 +51,7 @@ class StockElement extends HookConsumerWidget {
                     item.createAt.toString(),
                     style: const TextStyle(
                       fontFamily: 'SFProDisplay',
-                      color: Color(0x00898989),
+                      color: Color(0xFF898989),
                       fontSize: 11,
                     ),
                   ),
