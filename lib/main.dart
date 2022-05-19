@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mykeep/ui/adding/adding_view_model.dart';
 import 'package:mykeep/ui/mystock/my_stock_page.dart';
 
 void main() {
@@ -13,11 +14,14 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends HookConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AddingViewModel addingViewModel =
+        ref.read(addingViewModelProvider.notifier);
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -29,7 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         body: const MyStockPage(),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            addingViewModel.addKeepItem("https://qiita.com/emusute1212/items/6195cf18bfcbea2ef1d1");
+          },
           tooltip: 'Increment',
           child: const Icon(Icons.add),
         ),
