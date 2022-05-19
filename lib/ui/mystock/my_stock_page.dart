@@ -23,7 +23,10 @@ class MyStockPage extends HookConsumerWidget {
     return GridView.builder(
       itemCount: state.items.length,
       itemBuilder: (_, index) {
-        return StockElement(item: state.items[index]);
+        return StockElement(
+          item: state.items[index],
+          onTapItem: (item) => {},
+        );
       },
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
