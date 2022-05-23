@@ -22,18 +22,20 @@ class MyStockPage extends HookConsumerWidget {
       myStockViewModel.init();
       return null;
     }, const []);
-    return GridView.builder(
-      itemCount: state.items.length,
-      itemBuilder: (_, index) {
-        final KeepItem item = state.items[index];
-        return StockElement(
-          item: item,
-          onTapItem: (item) => {
-            launchUrl(Uri.parse(item.targetUrl),
-                mode: LaunchMode.externalApplication)
-          },
-        );
-      },
+    return SliverGrid(
+      delegate: SliverChildBuilderDelegate(
+        (_, index) {
+          final KeepItem item = state.items[index];
+          return StockElement(
+            item: item,
+            onTapItem: (item) => {
+              launchUrl(Uri.parse(item.targetUrl),
+                  mode: LaunchMode.externalApplication)
+            },
+          );
+        },
+        childCount: state.items.length,
+      ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),

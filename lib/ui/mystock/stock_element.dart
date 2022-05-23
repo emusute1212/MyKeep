@@ -42,10 +42,9 @@ class StockElement extends HookConsumerWidget {
                   child: Text(
                     item.title,
                     style: const TextStyle(
-                      fontFamily: 'SFProDisplay',
                       color: Color(0xFF000000),
                       fontSize: 14,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -60,9 +59,9 @@ class StockElement extends HookConsumerWidget {
                   child: Text(
                     item.createAt.toString(),
                     style: const TextStyle(
-                      fontFamily: 'SFProDisplay',
                       color: Color(0xFF898989),
                       fontSize: 11,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
