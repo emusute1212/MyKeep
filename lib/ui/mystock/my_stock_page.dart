@@ -32,6 +32,9 @@ class MyStockPage extends HookConsumerWidget {
               launchUrl(Uri.parse(item.targetUrl),
                   mode: LaunchMode.externalApplication)
             },
+            onTapItemCheck: (item) => {
+              myStockViewModel.deleteStock(item)
+            },
           );
         },
         childCount: state.items.length,

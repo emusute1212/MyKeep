@@ -8,10 +8,12 @@ class StockElement extends HookConsumerWidget {
     Key? key,
     required this.item,
     required this.onTapItem,
+    required this.onTapItemCheck,
   }) : super(key: key);
 
   final KeepItem item;
   final Function(KeepItem) onTapItem;
+  final Function(KeepItem) onTapItemCheck;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -87,7 +89,7 @@ class StockElement extends HookConsumerWidget {
                   padding: const EdgeInsets.all(0),
                   shape: const CircleBorder(),
                 ),
-                onPressed: () {},
+                onPressed: () => onTapItemCheck(item),
               ),
             ),
           )
