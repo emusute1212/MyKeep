@@ -76,23 +76,20 @@ class StockElement extends HookConsumerWidget {
               margin: const EdgeInsets.all(8),
               width: 28,
               height: 28,
-              child: ElevatedButton(
-                child: const Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  size: 18,
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: const Color(0x809A9A9A),
-                  onPrimary: Colors.black,
-                  elevation: 0,
-                  padding: const EdgeInsets.all(0),
-                  shape: const CircleBorder(),
-                ),
+              decoration: const ShapeDecoration(
+                color: Color(0x809A9A9A),
+                shape: CircleBorder(),
+              ),
+              child: IconButton(
+                splashRadius: 18,
+                padding: EdgeInsets.zero,
+                icon: const Icon(Icons.check),
+                color: Colors.white,
+                iconSize: 18,
                 onPressed: () => onTapItemCheck(item),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -19,7 +19,7 @@ class App extends HookConsumerWidget {
       ),
       home: Scaffold(
         body: CustomScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
               backgroundColor: const Color(0xFFF9F9F9),
@@ -27,21 +27,15 @@ class App extends HookConsumerWidget {
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(8),
-                  child: ElevatedButton(
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
                     onPressed: () {
                       addingViewModel.addKeepItem(
                           "https://qiita.com/emusute1212/items/6195cf18bfcbea2ef1d1");
                     },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      elevation: 0,
-                      shape: const CircleBorder(),
-                    ),
-                    child: const Icon(
-                      Icons.add_sharp,
-                      color: Colors.black,
-                      size: 30,
-                    ),
+                    icon: const Icon(Icons.add_sharp),
+                    color: Colors.black,
+                    iconSize: 30,
                   ),
                 ),
               ],
