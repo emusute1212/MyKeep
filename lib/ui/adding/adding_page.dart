@@ -25,7 +25,9 @@ class AddingPage extends HookConsumerWidget {
           style: TextButton.styleFrom(
             primary: Colors.blue,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: const Text(
           "追加",
@@ -36,25 +38,37 @@ class AddingPage extends HookConsumerWidget {
           ),
         ),
         actions: [
-          TextButton(
-            child: const Text("完了"),
-            style: TextButton.styleFrom(
-              primary: Colors.blue,
+          Visibility(
+            visible: state.isPossibleToSave,
+            child: TextButton(
+              child: const Text("完了"),
+              style: TextButton.styleFrom(
+                primary: Colors.blue,
+              ),
+              onPressed: () {
+                addingViewModel.addKeepItem(state.url);
+                Navigator.pop(context);
+              },
             ),
-            onPressed: () {},
           ),
         ],
       ),
       body: Column(
-        children: const [
-          TextField(
-            decoration: InputDecoration(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            onChanged: (input) {
+              addingViewModel.onChangeUrl(input);
+            },
+            validator: (_) {
+              if (state.isPossibleToSave) {
+                return null;
+              }
+              return "URLの形式になるようにしてください。";
+            },
+            decoration: const InputDecoration(
               labelText: "URL",
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "タイトル",
             ),
           ),
         ],

@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
+import 'package:mykeep/data/entity/ogp_entity.dart';
 import 'package:mykeep/data/repository/keep_item_repository.dart';
 import 'package:mykeep/data/repository/ogp_repository.dart';
 
@@ -18,6 +19,11 @@ class MyKeepUsecase {
 
   Stream<List<KeepItem>> observeKeepItem() {
     return _keepItemRepository.observeKeepItems();
+  }
+
+  Future<String> getTitle(String targetUrl) async {
+    final ogpEntity = await _ogpRepository.loadOgpEntity(targetUrl);
+    return ogpEntity.title;
   }
 
   Future<void> addKeepItem(String targetUrl) async {
