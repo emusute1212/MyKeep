@@ -75,4 +75,12 @@ class AddingPage extends HookConsumerWidget {
       ),
     );
   }
+
+  static void showAddingPage(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: false,
+      builder: (_) => const AddingPage(),
+    );
+  }
 }

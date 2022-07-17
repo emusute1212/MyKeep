@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mykeep/data/entity/keep_item.dart';
 
 part 'adding_state.freezed.dart';
 part 'adding_state.g.dart';

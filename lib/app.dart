@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_page.dart';
-import 'package:mykeep/ui/adding/adding_view_model.dart';
 import 'package:mykeep/ui/mystock/my_stock_page.dart';
+import 'package:mykeep/ui/share/share_view_model.dart';
+import 'package:mykeep/ui/share/state/share_state.dart';
 
 class App extends HookConsumerWidget {
   const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AddingViewModel addingViewModel =
-    ref.read(addingViewModelProvider.notifier);
+    final ShareViewModel shareViewModel =
+        ref.read(shareViewModelProvider.notifier);
+    // MEMO 共有ボタンから飛んできたときに追加画面を開く機能。
+    // 初回リリースでは不要。
+    // ただし、後々追加される可能性はあるので一応コメントアウトで残しておく。
+    // final ShareState state = ref.watch(shareViewModelProvider);
+
+    useEffect(() {
+      shareViewModel.init();
+      return null;
+    }, const []);
 
     return MaterialApp(
       title: 'My keep',
@@ -18,8 +29,17 @@ class App extends HookConsumerWidget {
         backgroundColor: const Color(0xFFF9F9F9),
         fontFamily: ".SF Pro Display",
       ),
-      home: Builder(
-        builder: (context) => Scaffold(
+      home: Builder(builder: (context) {
+        // MEMO 共有ボタンから飛んできたときに追加画面を開く機能。
+        // 初回リリースでは不要。
+        // ただし、後々追加される可能性はあるので一応コメントアウトで残しておく。
+        // WidgetsBinding.instance.addPostFrameCallback((_) {
+        //   print("url is " + state.url.toString());
+        //   if (state.url?.isNotEmpty == true) {
+        //     AddingPage.showAddingPage(context);
+        //   }
+        // });
+        return Scaffold(
           body: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
@@ -32,11 +52,7 @@ class App extends HookConsumerWidget {
                     child: IconButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: false,
-                          builder: (_) => const AddingPage(),
-                        );
+                        AddingPage.showAddingPage(context);
                       },
                       icon: const Icon(Icons.add_sharp),
                       color: Colors.black,
@@ -63,8 +79,8 @@ class App extends HookConsumerWidget {
               const MyStockPage(),
             ],
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }

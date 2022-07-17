@@ -64,6 +64,9 @@ dependencies:
   # isURLを利用したい
   string_validator: ^0.3.0
 
+  # 共有メニューにこのアプリを増やす
+  receive_sharing_intent: ^1.4.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
