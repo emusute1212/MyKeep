@@ -32,6 +32,10 @@ class MyKeepUsecase {
         ogpEntity.title, ogpEntity.imageUrl, targetUrl, DateTime.now());
   }
 
+  Future<void> updateKeepItem(KeepItem targetItem) async {
+    return _keepItemRepository.updateKeepItem(targetItem);
+  }
+
   Future<void> deleteKeepItem(KeepItem target) async {
     return _keepItemRepository.deleteKeepItem(target);
   }

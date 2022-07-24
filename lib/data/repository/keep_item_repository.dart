@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
+import 'package:mykeep/utils/keep_items_ext.dart';
 import 'package:mykeep/utils/stock_items_ext.dart';
 
 import '../db/my_keep_database.dart';
@@ -31,5 +32,9 @@ class KeepItemRepository {
 
   Future<void> deleteKeepItem(KeepItem target) async {
     await _database.deleteStockItem(target.id);
+  }
+
+  Future<void> updateKeepItem(KeepItem targetItem) async {
+    await _database.updateStockItem(targetItem.toStockItemsCompanion());
   }
 }

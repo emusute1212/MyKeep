@@ -37,6 +37,28 @@ void main() {
 
     expect(resultAfter.length, 0);
   });
+  test('アイテムを編集するテスト', () async {
+    final currentDate = DateTime.now();
+    await _keepItemRepository.addKeepItem("test1", "https://example.com/images",
+        "https://example.com", currentDate);
+
+    final result = await _keepItemRepository.observeKeepItems().first;
+
+    final updateItem = result.first.copyWith(
+      title: "update1",
+      imageUrl: "https://example.com/1/images",
+      targetUrl: "https://example.com/1",
+    );
+
+    await _keepItemRepository.updateKeepItem(updateItem);
+
+    final resultAfter = await _keepItemRepository.observeKeepItems().first;
+
+    expect(resultAfter.length, 1);
+    expect(resultAfter.first.title, "update1");
+    expect(resultAfter.first.imageUrl, "https://example.com/1/images");
+    expect(resultAfter.first.targetUrl, "https://example.com/1");
+  });
 
   tearDown(() async {
     await _database.close();

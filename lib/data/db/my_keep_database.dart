@@ -41,6 +41,11 @@ class MyKeepDatabase extends _$MyKeepDatabase {
 
   Future deleteStockItem(int id) =>
       (delete(stockItems)..where((it) => it.id.equals(id))).go();
+
+  Future updateStockItem(StockItemsCompanion target) {
+    return (update(stockItems)..where((t) => t.id.equals(target.id.value)))
+        .write(target);
+  }
 }
 
 LazyDatabase _openConnection() {
