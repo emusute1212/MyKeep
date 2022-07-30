@@ -10,7 +10,7 @@ final shareViewModelProvider =
         (ref) => ShareViewModel(ref.read(myKeepUsecaseyProvider)));
 
 class ShareViewModel extends StateNotifier<ShareState> {
-  StreamSubscription? _intentDataStreamSubscription;
+  late final StreamSubscription _intentDataStreamSubscription;
   final MyKeepUsecase _usecase;
 
   ShareViewModel(this._usecase)
@@ -42,7 +42,7 @@ class ShareViewModel extends StateNotifier<ShareState> {
 
   @override
   void dispose() {
-    _intentDataStreamSubscription?.cancel();
+    _intentDataStreamSubscription.cancel();
     super.dispose();
   }
 }
