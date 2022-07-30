@@ -4,12 +4,15 @@ import 'package:mykeep/data/db/my_keep_database.dart';
 import 'package:mykeep/data/repository/keep_item_repository.dart';
 
 void main() {
-  late final MyKeepDatabase _database;
-  late final KeepItemRepository _keepItemRepository;
+  late MyKeepDatabase _database;
+  late KeepItemRepository _keepItemRepository;
 
   setUp(() {
     _database = MyKeepDatabase.withQueryExecutor(NativeDatabase.memory());
     _keepItemRepository = KeepItemRepository(_database);
+  });
+  tearDown(() async {
+    await _database.close();
   });
 
   test('アイテムを追加・見るテスト', () async {
