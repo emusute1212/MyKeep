@@ -20,6 +20,8 @@ class StockElement extends HookConsumerWidget {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       clipBehavior: Clip.antiAliasWithSaveLayer,
+      elevation: 0,
+      margin: EdgeInsets.zero,
       child: Stack(
         children: [
           InkWell(
@@ -39,13 +41,15 @@ class StockElement extends HookConsumerWidget {
                     top: 8,
                     left: 10,
                     right: 10,
-                    bottom: 8,
                   ),
                   child: Text(
                     item.title,
+                    strutStyle: const StrutStyle(
+                      fontSize: 14,
+                      height: 1.4,
+                    ),
                     style: const TextStyle(
                       color: Color(0xFF000000),
-                      fontSize: 14,
                       fontWeight: FontWeight.w700,
                     ),
                     overflow: TextOverflow.ellipsis,
@@ -57,6 +61,7 @@ class StockElement extends HookConsumerWidget {
                     top: 2,
                     left: 10,
                     right: 10,
+                    bottom: 8,
                   ),
                   child: Text(
                     item.createAt.toString(),

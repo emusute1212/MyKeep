@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_page.dart';
 import 'package:mykeep/ui/mystock/my_stock_page.dart';
 import 'package:mykeep/ui/share/share_view_model.dart';
-import 'package:mykeep/ui/share/state/share_state.dart';
 
 class App extends HookConsumerWidget {
   const App({Key? key}) : super(key: key);
@@ -76,7 +75,15 @@ class App extends HookConsumerWidget {
                   ),
                 ),
               ),
-              const MyStockPage(),
+              const SliverPadding(
+                sliver: MyStockPage(),
+                padding: EdgeInsets.only(
+                  top: 22,
+                  left: 16,
+                  right: 16,
+                  bottom: 22,
+                ),
+              ),
             ],
           ),
         );

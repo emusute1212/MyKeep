@@ -41,6 +41,8 @@ class MyStockPage extends HookConsumerWidget {
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 18,
       ),
     );
   }
