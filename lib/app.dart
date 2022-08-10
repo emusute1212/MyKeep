@@ -25,7 +25,7 @@ class App extends HookConsumerWidget {
     return MaterialApp(
       title: 'My keep',
       theme: ThemeData(
-        backgroundColor: const Color(0xFFF9F9F9),
+        backgroundColor: const Color(0xFFF8F8F8),
         fontFamily: ".SF Pro Display",
       ),
       home: Builder(builder: (context) {
@@ -43,7 +43,7 @@ class App extends HookConsumerWidget {
             physics: const BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
-                backgroundColor: const Color(0xFFF9F9F9),
+                backgroundColor: const Color(0xFFF8F8F8),
                 expandedHeight: 126,
                 actions: [
                   Padding(
@@ -66,7 +66,7 @@ class App extends HookConsumerWidget {
                     bottom: 7,
                   ),
                   title: Text(
-                    "マイストック",
+                    "マイキープ",
                     style: TextStyle(
                       color: Color(0xFF000000),
                       fontSize: 20,
