@@ -25,7 +25,9 @@ class App extends HookConsumerWidget {
     return MaterialApp(
       title: 'My keep',
       theme: ThemeData(
-        backgroundColor: const Color(0xFFF8F8F8),
+        colorScheme: ColorScheme.fromSwatch(
+          backgroundColor: const Color(0xFFe5e5e5),
+        ),
         fontFamily: ".SF Pro Display",
       ),
       home: Builder(builder: (context) {

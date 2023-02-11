@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_view_model.dart';
@@ -32,7 +31,7 @@ class AddingPage extends HookConsumerWidget {
                     ),
                   ),
                   style: TextButton.styleFrom(
-                    primary: Colors.blue,
+                    foregroundColor: Colors.blue,
                     padding: const EdgeInsets.only(
                       top: 22,
                       left: 8,
@@ -54,7 +53,7 @@ class AddingPage extends HookConsumerWidget {
                       ),
                     ),
                     style: TextButton.styleFrom(
-                      primary: Colors.blue,
+                      foregroundColor: Colors.blue,
                       padding: const EdgeInsets.only(
                         top: 22,
                         right: 8,
