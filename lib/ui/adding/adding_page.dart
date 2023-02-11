@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_view_model.dart';
@@ -87,19 +88,44 @@ class AddingPage extends HookConsumerWidget {
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            TextFormField(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              onChanged: (input) {
-                addingViewModel.onChangeUrl(input);
-              },
-              validator: (_) {
-                if (state.isPossibleToSave) {
-                  return null;
-                }
-                return "URLの形式になるようにしてください。";
-              },
-              decoration: const InputDecoration(
-                labelText: "URL",
+            Padding(
+              padding: const EdgeInsets.only(
+                right: 16,
+                left: 16,
+                top: 32,
+              ),
+              child: TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                onChanged: (input) {
+                  addingViewModel.onChangeUrl(input);
+                },
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+                validator: (_) {
+                  if (state.isPossibleToSave) {
+                    return null;
+                  }
+                  return "URLの形式になるようにしてください";
+                },
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: InputBorder.none,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(
+                      color: Colors.white,
+                    ),
+                  ),
+                  hintText: "URL",
+                  contentPadding: const EdgeInsets.only(
+                    top: 12,
+                    bottom: 12,
+                    left: 12,
+                    right: 12,
+                  ),
+                ),
               ),
             ),
           ],
@@ -115,7 +141,7 @@ class AddingPage extends HookConsumerWidget {
           top: Radius.circular(10.0),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8F8F8),
       context: context,
       isScrollControlled: false,
       builder: (_) => const AddingPage(),
