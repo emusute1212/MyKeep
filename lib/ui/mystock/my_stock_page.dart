@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
 import 'package:mykeep/ui/mystock/my_stock_view_model.dart';
@@ -18,10 +17,6 @@ class MyStockPage extends HookConsumerWidget {
         ref.read(myStockViewModelProvider.notifier);
     final MyStockState state = ref.watch(myStockViewModelProvider);
 
-    useEffect(() {
-      myStockViewModel.init();
-      return null;
-    }, const []);
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(
         (_, index) {
@@ -32,9 +27,7 @@ class MyStockPage extends HookConsumerWidget {
               launchUrl(Uri.parse(item.targetUrl),
                   mode: LaunchMode.externalApplication)
             },
-            onTapItemCheck: (item) => {
-              myStockViewModel.deleteStock(item)
-            },
+            onTapItemCheck: (item) => {myStockViewModel.deleteStock(item)},
           );
         },
         childCount: state.items.length,

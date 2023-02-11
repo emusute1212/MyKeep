@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_page.dart';
+import 'package:mykeep/ui/mystock/my_stock_empty.dart';
 import 'package:mykeep/ui/mystock/my_stock_page.dart';
+import 'package:mykeep/ui/mystock/my_stock_view_model.dart';
+import 'package:mykeep/ui/mystock/state/my_stock_state.dart';
 import 'package:mykeep/ui/share/share_view_model.dart';
 
 class App extends HookConsumerWidget {
@@ -16,9 +19,13 @@ class App extends HookConsumerWidget {
     // 初回リリースでは不要。
     // ただし、後々追加される可能性はあるので一応コメントアウトで残しておく。
     // final ShareState state = ref.watch(shareViewModelProvider);
+    final MyStockViewModel myStockViewModel =
+        ref.read(myStockViewModelProvider.notifier);
+    final MyStockState state = ref.watch(myStockViewModelProvider);
 
     useEffect(() {
       shareViewModel.init();
+      myStockViewModel.init();
       return null;
     }, const []);
 
@@ -77,15 +84,24 @@ class App extends HookConsumerWidget {
                   ),
                 ),
               ),
-              const SliverPadding(
-                sliver: MyStockPage(),
-                padding: EdgeInsets.only(
-                  top: 22,
-                  left: 16,
-                  right: 16,
-                  bottom: 22,
-                ),
-              ),
+              state.items.isEmpty
+                  ? const SliverToBoxAdapter(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 88,
+                        ),
+                        child: MyStockEmpty(),
+                      ),
+                    )
+                  : const SliverPadding(
+                      sliver: MyStockPage(),
+                      padding: EdgeInsets.only(
+                        top: 22,
+                        left: 16,
+                        right: 16,
+                        bottom: 22,
+                      ),
+                    ),
             ],
           ),
         );

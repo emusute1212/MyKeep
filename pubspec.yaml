@@ -85,6 +85,9 @@ dev_dependencies:
   # freezed
   freezed: ^2.0.2
 
+  # SVG overlay_support:
+  flutter_svg: ^2.0.0+1
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -126,3 +129,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/empty.svg
