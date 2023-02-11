@@ -30,7 +30,8 @@ class StockElement extends HookConsumerWidget {
               children: <Widget>[
                 Ink.image(
                   height: 120,
-                  fit: BoxFit.fitHeight,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                   image: NetworkImage(
                     item.imageUrl ?? "",
                   ),
