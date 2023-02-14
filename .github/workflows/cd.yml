@@ -1,0 +1,26 @@
+name: CD
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+      - name: Download Flutter packages
+        run: flutter pub get
+      - name: Create AAB
+        run: flutter build appbundle
+      - name: Create iOS
+        run: flutter build ipa
+      - name: Zip builds
+        run:
+      - name: Artifact builds
+          uses: actions/upload-artifact@v3
+          with:
+            name: code-coverage-report
+            path:
+              - build/app/outputs/bundle/release/app-release.aab
+              - build/build/ios/ipa
