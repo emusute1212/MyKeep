@@ -21,6 +21,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path:
-            - build/app/outputs/bundle/release/app-release.aab
-            - build/build/ios/ipa
+          path: |
+            build/app/outputs/bundle/release/app-release.aab
+            build/build/ios/ipa
