@@ -16,6 +16,7 @@ class ShareViewModel extends StateNotifier<ShareState> {
   ShareViewModel(this._usecase)
       : super(const ShareState(
           url: null,
+          isSuccess: null,
         ));
 
   void init() {
@@ -31,13 +32,15 @@ class ShareViewModel extends StateNotifier<ShareState> {
     });
   }
 
-  void _onNotifyUrl(String? url) {
+  void _onNotifyUrl(String? url) async {
     print("Shareed Url is `$url`");
     if (url == null) return;
-    state = state.copyWith(
-      url: url,
-    );
-    _usecase.addKeepItem(url);
+    _usecase.addKeepItem(url).then((isSuccess) {
+      state = state.copyWith(
+        url: url,
+        isSuccess: isSuccess,
+      );
+    });
   }
 
   @override

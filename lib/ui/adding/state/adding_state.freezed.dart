@@ -34,77 +34,81 @@ mixin _$AddingState {
 abstract class $AddingStateCopyWith<$Res> {
   factory $AddingStateCopyWith(
           AddingState value, $Res Function(AddingState) then) =
-      _$AddingStateCopyWithImpl<$Res>;
+      _$AddingStateCopyWithImpl<$Res, AddingState>;
+  @useResult
   $Res call({String url, String title, bool isPossibleToSave});
 }
 
 /// @nodoc
-class _$AddingStateCopyWithImpl<$Res> implements $AddingStateCopyWith<$Res> {
+class _$AddingStateCopyWithImpl<$Res, $Val extends AddingState>
+    implements $AddingStateCopyWith<$Res> {
   _$AddingStateCopyWithImpl(this._value, this._then);
 
-  final AddingState _value;
   // ignore: unused_field
-  final $Res Function(AddingState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = freezed,
-    Object? title = freezed,
-    Object? isPossibleToSave = freezed,
+    Object? url = null,
+    Object? title = null,
+    Object? isPossibleToSave = null,
   }) {
     return _then(_value.copyWith(
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      isPossibleToSave: isPossibleToSave == freezed
+      isPossibleToSave: null == isPossibleToSave
           ? _value.isPossibleToSave
           : isPossibleToSave // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AddingStateCopyWith<$Res>
+abstract class _$$_AddingStateCopyWith<$Res>
     implements $AddingStateCopyWith<$Res> {
-  factory _$AddingStateCopyWith(
-          _AddingState value, $Res Function(_AddingState) then) =
-      __$AddingStateCopyWithImpl<$Res>;
+  factory _$$_AddingStateCopyWith(
+          _$_AddingState value, $Res Function(_$_AddingState) then) =
+      __$$_AddingStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String url, String title, bool isPossibleToSave});
 }
 
 /// @nodoc
-class __$AddingStateCopyWithImpl<$Res> extends _$AddingStateCopyWithImpl<$Res>
-    implements _$AddingStateCopyWith<$Res> {
-  __$AddingStateCopyWithImpl(
-      _AddingState _value, $Res Function(_AddingState) _then)
-      : super(_value, (v) => _then(v as _AddingState));
+class __$$_AddingStateCopyWithImpl<$Res>
+    extends _$AddingStateCopyWithImpl<$Res, _$_AddingState>
+    implements _$$_AddingStateCopyWith<$Res> {
+  __$$_AddingStateCopyWithImpl(
+      _$_AddingState _value, $Res Function(_$_AddingState) _then)
+      : super(_value, _then);
 
-  @override
-  _AddingState get _value => super._value as _AddingState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? url = freezed,
-    Object? title = freezed,
-    Object? isPossibleToSave = freezed,
+    Object? url = null,
+    Object? title = null,
+    Object? isPossibleToSave = null,
   }) {
-    return _then(_AddingState(
-      url: url == freezed
+    return _then(_$_AddingState(
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      isPossibleToSave: isPossibleToSave == freezed
+      isPossibleToSave: null == isPossibleToSave
           ? _value.isPossibleToSave
           : isPossibleToSave // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -137,29 +141,28 @@ class _$_AddingState implements _AddingState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddingState &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.isPossibleToSave, isPossibleToSave));
+            other is _$_AddingState &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.isPossibleToSave, isPossibleToSave) ||
+                other.isPossibleToSave == isPossibleToSave));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(isPossibleToSave));
+  int get hashCode => Object.hash(runtimeType, url, title, isPossibleToSave);
 
   @JsonKey(ignore: true)
   @override
-  _$AddingStateCopyWith<_AddingState> get copyWith =>
-      __$AddingStateCopyWithImpl<_AddingState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_AddingStateCopyWith<_$_AddingState> get copyWith =>
+      __$$_AddingStateCopyWithImpl<_$_AddingState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddingStateToJson(this);
+    return _$$_AddingStateToJson(
+      this,
+    );
   }
 }
 
@@ -173,13 +176,13 @@ abstract class _AddingState implements AddingState {
       _$_AddingState.fromJson;
 
   @override
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  bool get isPossibleToSave => throw _privateConstructorUsedError;
+  bool get isPossibleToSave;
   @override
   @JsonKey(ignore: true)
-  _$AddingStateCopyWith<_AddingState> get copyWith =>
+  _$$_AddingStateCopyWith<_$_AddingState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -32,65 +32,70 @@ mixin _$OgpEntity {
 /// @nodoc
 abstract class $OgpEntityCopyWith<$Res> {
   factory $OgpEntityCopyWith(OgpEntity value, $Res Function(OgpEntity) then) =
-      _$OgpEntityCopyWithImpl<$Res>;
+      _$OgpEntityCopyWithImpl<$Res, OgpEntity>;
+  @useResult
   $Res call({String title, String? imageUrl});
 }
 
 /// @nodoc
-class _$OgpEntityCopyWithImpl<$Res> implements $OgpEntityCopyWith<$Res> {
+class _$OgpEntityCopyWithImpl<$Res, $Val extends OgpEntity>
+    implements $OgpEntityCopyWith<$Res> {
   _$OgpEntityCopyWithImpl(this._value, this._then);
 
-  final OgpEntity _value;
   // ignore: unused_field
-  final $Res Function(OgpEntity) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
+    Object? title = null,
     Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$OgpEntityCopyWith<$Res> implements $OgpEntityCopyWith<$Res> {
-  factory _$OgpEntityCopyWith(
-          _OgpEntity value, $Res Function(_OgpEntity) then) =
-      __$OgpEntityCopyWithImpl<$Res>;
+abstract class _$$_OgpEntityCopyWith<$Res> implements $OgpEntityCopyWith<$Res> {
+  factory _$$_OgpEntityCopyWith(
+          _$_OgpEntity value, $Res Function(_$_OgpEntity) then) =
+      __$$_OgpEntityCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String title, String? imageUrl});
 }
 
 /// @nodoc
-class __$OgpEntityCopyWithImpl<$Res> extends _$OgpEntityCopyWithImpl<$Res>
-    implements _$OgpEntityCopyWith<$Res> {
-  __$OgpEntityCopyWithImpl(_OgpEntity _value, $Res Function(_OgpEntity) _then)
-      : super(_value, (v) => _then(v as _OgpEntity));
+class __$$_OgpEntityCopyWithImpl<$Res>
+    extends _$OgpEntityCopyWithImpl<$Res, _$_OgpEntity>
+    implements _$$_OgpEntityCopyWith<$Res> {
+  __$$_OgpEntityCopyWithImpl(
+      _$_OgpEntity _value, $Res Function(_$_OgpEntity) _then)
+      : super(_value, _then);
 
-  @override
-  _OgpEntity get _value => super._value as _OgpEntity;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
+    Object? title = null,
     Object? imageUrl = freezed,
   }) {
-    return _then(_OgpEntity(
-      title: title == freezed
+    return _then(_$_OgpEntity(
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -120,26 +125,27 @@ class _$_OgpEntity implements _OgpEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OgpEntity &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            other is _$_OgpEntity &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(imageUrl));
+  int get hashCode => Object.hash(runtimeType, title, imageUrl);
 
   @JsonKey(ignore: true)
   @override
-  _$OgpEntityCopyWith<_OgpEntity> get copyWith =>
-      __$OgpEntityCopyWithImpl<_OgpEntity>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_OgpEntityCopyWith<_$_OgpEntity> get copyWith =>
+      __$$_OgpEntityCopyWithImpl<_$_OgpEntity>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OgpEntityToJson(this);
+    return _$$_OgpEntityToJson(
+      this,
+    );
   }
 }
 
@@ -152,11 +158,11 @@ abstract class _OgpEntity implements OgpEntity {
       _$_OgpEntity.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String? get imageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$OgpEntityCopyWith<_OgpEntity> get copyWith =>
+  _$$_OgpEntityCopyWith<_$_OgpEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

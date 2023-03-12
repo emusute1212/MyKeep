@@ -32,58 +32,62 @@ mixin _$MyStockState {
 abstract class $MyStockStateCopyWith<$Res> {
   factory $MyStockStateCopyWith(
           MyStockState value, $Res Function(MyStockState) then) =
-      _$MyStockStateCopyWithImpl<$Res>;
+      _$MyStockStateCopyWithImpl<$Res, MyStockState>;
+  @useResult
   $Res call({List<KeepItem> items});
 }
 
 /// @nodoc
-class _$MyStockStateCopyWithImpl<$Res> implements $MyStockStateCopyWith<$Res> {
+class _$MyStockStateCopyWithImpl<$Res, $Val extends MyStockState>
+    implements $MyStockStateCopyWith<$Res> {
   _$MyStockStateCopyWithImpl(this._value, this._then);
 
-  final MyStockState _value;
   // ignore: unused_field
-  final $Res Function(MyStockState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = freezed,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
-      items: items == freezed
+      items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<KeepItem>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$MyStockStateCopyWith<$Res>
+abstract class _$$_MyStockStateCopyWith<$Res>
     implements $MyStockStateCopyWith<$Res> {
-  factory _$MyStockStateCopyWith(
-          _MyStockState value, $Res Function(_MyStockState) then) =
-      __$MyStockStateCopyWithImpl<$Res>;
+  factory _$$_MyStockStateCopyWith(
+          _$_MyStockState value, $Res Function(_$_MyStockState) then) =
+      __$$_MyStockStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<KeepItem> items});
 }
 
 /// @nodoc
-class __$MyStockStateCopyWithImpl<$Res> extends _$MyStockStateCopyWithImpl<$Res>
-    implements _$MyStockStateCopyWith<$Res> {
-  __$MyStockStateCopyWithImpl(
-      _MyStockState _value, $Res Function(_MyStockState) _then)
-      : super(_value, (v) => _then(v as _MyStockState));
+class __$$_MyStockStateCopyWithImpl<$Res>
+    extends _$MyStockStateCopyWithImpl<$Res, _$_MyStockState>
+    implements _$$_MyStockStateCopyWith<$Res> {
+  __$$_MyStockStateCopyWithImpl(
+      _$_MyStockState _value, $Res Function(_$_MyStockState) _then)
+      : super(_value, _then);
 
-  @override
-  _MyStockState get _value => super._value as _MyStockState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? items = freezed,
+    Object? items = null,
   }) {
-    return _then(_MyStockState(
-      items: items == freezed
-          ? _value.items
+    return _then(_$_MyStockState(
+      items: null == items
+          ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<KeepItem>,
     ));
@@ -114,23 +118,26 @@ class _$_MyStockState implements _MyStockState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MyStockState &&
-            const DeepCollectionEquality().equals(other.items, items));
+            other is _$_MyStockState &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(items));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
-  _$MyStockStateCopyWith<_MyStockState> get copyWith =>
-      __$MyStockStateCopyWithImpl<_MyStockState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_MyStockStateCopyWith<_$_MyStockState> get copyWith =>
+      __$$_MyStockStateCopyWithImpl<_$_MyStockState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MyStockStateToJson(this);
+    return _$$_MyStockStateToJson(
+      this,
+    );
   }
 }
 
@@ -142,9 +149,9 @@ abstract class _MyStockState implements MyStockState {
       _$_MyStockState.fromJson;
 
   @override
-  List<KeepItem> get items => throw _privateConstructorUsedError;
+  List<KeepItem> get items;
   @override
   @JsonKey(ignore: true)
-  _$MyStockStateCopyWith<_MyStockState> get copyWith =>
+  _$$_MyStockStateCopyWith<_$_MyStockState> get copyWith =>
       throw _privateConstructorUsedError;
 }

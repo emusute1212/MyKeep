@@ -17,14 +17,11 @@ class AddingViewModel extends StateNotifier<AddingState> {
           isPossibleToSave: false,
         ));
 
-  Future<void> addKeepItem(String targetUrl) {
-    return _usecase.addKeepItem(targetUrl);
+  Future<bool> addKeepItem(String targetUrl) async {
+    return await _usecase.addKeepItem(targetUrl);
   }
 
   void onChangeUrl(String urlText) {
-    state = state.copyWith(
-        url: urlText,
-        isPossibleToSave: isURL(urlText)
-    );
+    state = state.copyWith(url: urlText, isPossibleToSave: isURL(urlText));
   }
 }

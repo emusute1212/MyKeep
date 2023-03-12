@@ -26,10 +26,17 @@ class MyKeepUsecase {
     return ogpEntity.title;
   }
 
-  Future<void> addKeepItem(String targetUrl) async {
-    final ogpEntity = await _ogpRepository.loadOgpEntity(targetUrl);
-    return _keepItemRepository.addKeepItem(
-        ogpEntity.title, ogpEntity.imageUrl, targetUrl, DateTime.now());
+  Future<bool> addKeepItem(String targetUrl) async {
+    try {
+      final OgpEntity ogpEntity = await _ogpRepository.loadOgpEntity(targetUrl);
+      _keepItemRepository.addKeepItem(
+          ogpEntity.title, ogpEntity.imageUrl, targetUrl, DateTime.now());
+      return true;
+    } catch (e) {
+      _keepItemRepository.addKeepItem(
+          targetUrl, null, targetUrl, DateTime.now());
+      return false;
+    }
   }
 
   Future<void> updateKeepItem(KeepItem targetItem) async {

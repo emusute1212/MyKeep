@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_view_model.dart';
 import 'package:mykeep/ui/adding/state/adding_state.dart';
+import 'package:mykeep/ui/dialog/error_dialog.dart';
 
 class AddingPage extends HookConsumerWidget {
   const AddingPage({
@@ -60,8 +61,15 @@ class AddingPage extends HookConsumerWidget {
                       ),
                     ),
                     onPressed: () {
-                      addingViewModel.addKeepItem(state.url);
-                      Navigator.pop(context);
+                      addingViewModel.addKeepItem(state.url).then((isSuccess) {
+                        Navigator.pop(context);
+                        if (isSuccess) return;
+                        const ErrorDialog(
+                          title: "サイトを読み込むことができませんでした。",
+                          message: "画像、タイトルを読み込むことができませんでしたので、\n初期値で登録いたしました。",
+                          closeButtonLabel: "はい",
+                        ).show(context);
+                      });
                     },
                   ),
                 ),

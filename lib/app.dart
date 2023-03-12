@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_page.dart';
+import 'package:mykeep/ui/dialog/error_dialog.dart';
 import 'package:mykeep/ui/mystock/my_stock_empty.dart';
 import 'package:mykeep/ui/mystock/my_stock_page.dart';
 import 'package:mykeep/ui/mystock/my_stock_view_model.dart';
 import 'package:mykeep/ui/mystock/state/my_stock_state.dart';
 import 'package:mykeep/ui/share/share_view_model.dart';
+import 'package:mykeep/ui/share/state/share_state.dart';
 
 class App extends HookConsumerWidget {
   const App({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class App extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ShareViewModel shareViewModel =
         ref.read(shareViewModelProvider.notifier);
+    final ShareState shareState = ref.watch(shareViewModelProvider);
     // MEMO 共有ボタンから飛んできたときに追加画面を開く機能。
     // 初回リリースでは不要。
     // ただし、後々追加される可能性はあるので一応コメントアウトで残しておく。
@@ -38,15 +41,21 @@ class App extends HookConsumerWidget {
         fontFamily: ".SF Pro Display",
       ),
       home: Builder(builder: (context) {
-        // MEMO 共有ボタンから飛んできたときに追加画面を開く機能。
-        // 初回リリースでは不要。
-        // ただし、後々追加される可能性はあるので一応コメントアウトで残しておく。
-        // WidgetsBinding.instance.addPostFrameCallback((_) {
-        //   print("url is " + state.url.toString());
-        //   if (state.url?.isNotEmpty == true) {
-        //     AddingPage.showAddingPage(context);
-        //   }
-        // });
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          // MEMO 共有ボタンから飛んできたときに追加画面を開く機能。
+          // 初回リリースでは不要。
+          // ただし、後々追加される可能性はあるので一応コメントアウトで残しておく。
+          //   if (state.url?.isNotEmpty == true) {
+          //     AddingPage.showAddingPage(context);
+          //   }
+          if (shareState.isSuccess == false) {
+            const ErrorDialog(
+              title: "サイトを読み込むことができませんでした。",
+              message: "画像、タイトルを読み込むことができませんでしたので、\n初期値で登録いたしました。",
+              closeButtonLabel: "はい",
+            ).show(context);
+          }
+        });
         return Scaffold(
           body: CustomScrollView(
             physics: const BouncingScrollPhysics(),

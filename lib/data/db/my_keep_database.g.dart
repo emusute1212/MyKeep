@@ -6,7 +6,7 @@ part of 'my_keep_database.dart';
 // MoorGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
+// ignore_for_file: type=lint
 class StockItem extends DataClass implements Insertable<StockItem> {
   final int id;
   final String title;

@@ -21,6 +21,7 @@ ShareState _$ShareStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ShareState {
   String? get url => throw _privateConstructorUsedError;
+  bool? get isSuccess => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,59 +33,74 @@ mixin _$ShareState {
 abstract class $ShareStateCopyWith<$Res> {
   factory $ShareStateCopyWith(
           ShareState value, $Res Function(ShareState) then) =
-      _$ShareStateCopyWithImpl<$Res>;
-  $Res call({String? url});
+      _$ShareStateCopyWithImpl<$Res, ShareState>;
+  @useResult
+  $Res call({String? url, bool? isSuccess});
 }
 
 /// @nodoc
-class _$ShareStateCopyWithImpl<$Res> implements $ShareStateCopyWith<$Res> {
+class _$ShareStateCopyWithImpl<$Res, $Val extends ShareState>
+    implements $ShareStateCopyWith<$Res> {
   _$ShareStateCopyWithImpl(this._value, this._then);
 
-  final ShareState _value;
   // ignore: unused_field
-  final $Res Function(ShareState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? url = freezed,
+    Object? isSuccess = freezed,
   }) {
     return _then(_value.copyWith(
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+      isSuccess: freezed == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$ShareStateCopyWith<$Res> implements $ShareStateCopyWith<$Res> {
-  factory _$ShareStateCopyWith(
-          _ShareState value, $Res Function(_ShareState) then) =
-      __$ShareStateCopyWithImpl<$Res>;
+abstract class _$$_ShareStateCopyWith<$Res>
+    implements $ShareStateCopyWith<$Res> {
+  factory _$$_ShareStateCopyWith(
+          _$_ShareState value, $Res Function(_$_ShareState) then) =
+      __$$_ShareStateCopyWithImpl<$Res>;
   @override
-  $Res call({String? url});
+  @useResult
+  $Res call({String? url, bool? isSuccess});
 }
 
 /// @nodoc
-class __$ShareStateCopyWithImpl<$Res> extends _$ShareStateCopyWithImpl<$Res>
-    implements _$ShareStateCopyWith<$Res> {
-  __$ShareStateCopyWithImpl(
-      _ShareState _value, $Res Function(_ShareState) _then)
-      : super(_value, (v) => _then(v as _ShareState));
+class __$$_ShareStateCopyWithImpl<$Res>
+    extends _$ShareStateCopyWithImpl<$Res, _$_ShareState>
+    implements _$$_ShareStateCopyWith<$Res> {
+  __$$_ShareStateCopyWithImpl(
+      _$_ShareState _value, $Res Function(_$_ShareState) _then)
+      : super(_value, _then);
 
-  @override
-  _ShareState get _value => super._value as _ShareState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? url = freezed,
+    Object? isSuccess = freezed,
   }) {
-    return _then(_ShareState(
-      url: url == freezed
+    return _then(_$_ShareState(
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSuccess: freezed == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -92,53 +108,63 @@ class __$ShareStateCopyWithImpl<$Res> extends _$ShareStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ShareState implements _ShareState {
-  const _$_ShareState({required this.url});
+  const _$_ShareState({required this.url, required this.isSuccess});
 
   factory _$_ShareState.fromJson(Map<String, dynamic> json) =>
       _$$_ShareStateFromJson(json);
 
   @override
   final String? url;
+  @override
+  final bool? isSuccess;
 
   @override
   String toString() {
-    return 'ShareState(url: $url)';
+    return 'ShareState(url: $url, isSuccess: $isSuccess)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ShareState &&
-            const DeepCollectionEquality().equals(other.url, url));
+            other is _$_ShareState &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, url, isSuccess);
 
   @JsonKey(ignore: true)
   @override
-  _$ShareStateCopyWith<_ShareState> get copyWith =>
-      __$ShareStateCopyWithImpl<_ShareState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_ShareStateCopyWith<_$_ShareState> get copyWith =>
+      __$$_ShareStateCopyWithImpl<_$_ShareState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShareStateToJson(this);
+    return _$$_ShareStateToJson(
+      this,
+    );
   }
 }
 
 abstract class _ShareState implements ShareState {
-  const factory _ShareState({required final String? url}) = _$_ShareState;
+  const factory _ShareState(
+      {required final String? url,
+      required final bool? isSuccess}) = _$_ShareState;
 
   factory _ShareState.fromJson(Map<String, dynamic> json) =
       _$_ShareState.fromJson;
 
   @override
-  String? get url => throw _privateConstructorUsedError;
+  String? get url;
+  @override
+  bool? get isSuccess;
   @override
   @JsonKey(ignore: true)
-  _$ShareStateCopyWith<_ShareState> get copyWith =>
+  _$$_ShareStateCopyWith<_$_ShareState> get copyWith =>
       throw _privateConstructorUsedError;
 }

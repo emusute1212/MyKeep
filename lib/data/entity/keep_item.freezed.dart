@@ -35,7 +35,8 @@ mixin _$KeepItem {
 /// @nodoc
 abstract class $KeepItemCopyWith<$Res> {
   factory $KeepItemCopyWith(KeepItem value, $Res Function(KeepItem) then) =
-      _$KeepItemCopyWithImpl<$Res>;
+      _$KeepItemCopyWithImpl<$Res, KeepItem>;
+  @useResult
   $Res call(
       {int id,
       String title,
@@ -45,52 +46,56 @@ abstract class $KeepItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$KeepItemCopyWithImpl<$Res> implements $KeepItemCopyWith<$Res> {
+class _$KeepItemCopyWithImpl<$Res, $Val extends KeepItem>
+    implements $KeepItemCopyWith<$Res> {
   _$KeepItemCopyWithImpl(this._value, this._then);
 
-  final KeepItem _value;
   // ignore: unused_field
-  final $Res Function(KeepItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
+    Object? id = null,
+    Object? title = null,
     Object? imageUrl = freezed,
-    Object? targetUrl = freezed,
-    Object? createAt = freezed,
+    Object? targetUrl = null,
+    Object? createAt = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      targetUrl: targetUrl == freezed
+      targetUrl: null == targetUrl
           ? _value.targetUrl
           : targetUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      createAt: createAt == freezed
+      createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$KeepItemnCopyWith<$Res> implements $KeepItemCopyWith<$Res> {
-  factory _$KeepItemnCopyWith(
-          _KeepItemn value, $Res Function(_KeepItemn) then) =
-      __$KeepItemnCopyWithImpl<$Res>;
+abstract class _$$_KeepItemnCopyWith<$Res> implements $KeepItemCopyWith<$Res> {
+  factory _$$_KeepItemnCopyWith(
+          _$_KeepItemn value, $Res Function(_$_KeepItemn) then) =
+      __$$_KeepItemnCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       String title,
@@ -100,40 +105,40 @@ abstract class _$KeepItemnCopyWith<$Res> implements $KeepItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$KeepItemnCopyWithImpl<$Res> extends _$KeepItemCopyWithImpl<$Res>
-    implements _$KeepItemnCopyWith<$Res> {
-  __$KeepItemnCopyWithImpl(_KeepItemn _value, $Res Function(_KeepItemn) _then)
-      : super(_value, (v) => _then(v as _KeepItemn));
+class __$$_KeepItemnCopyWithImpl<$Res>
+    extends _$KeepItemCopyWithImpl<$Res, _$_KeepItemn>
+    implements _$$_KeepItemnCopyWith<$Res> {
+  __$$_KeepItemnCopyWithImpl(
+      _$_KeepItemn _value, $Res Function(_$_KeepItemn) _then)
+      : super(_value, _then);
 
-  @override
-  _KeepItemn get _value => super._value as _KeepItemn;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? title = freezed,
+    Object? id = null,
+    Object? title = null,
     Object? imageUrl = freezed,
-    Object? targetUrl = freezed,
-    Object? createAt = freezed,
+    Object? targetUrl = null,
+    Object? createAt = null,
   }) {
-    return _then(_KeepItemn(
-      id: id == freezed
+    return _then(_$_KeepItemn(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      targetUrl: targetUrl == freezed
+      targetUrl: null == targetUrl
           ? _value.targetUrl
           : targetUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      createAt: createAt == freezed
+      createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
@@ -174,32 +179,33 @@ class _$_KeepItemn implements _KeepItemn {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _KeepItemn &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.targetUrl, targetUrl) &&
-            const DeepCollectionEquality().equals(other.createAt, createAt));
+            other is _$_KeepItemn &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.targetUrl, targetUrl) ||
+                other.targetUrl == targetUrl) &&
+            (identical(other.createAt, createAt) ||
+                other.createAt == createAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(targetUrl),
-      const DeepCollectionEquality().hash(createAt));
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, imageUrl, targetUrl, createAt);
 
   @JsonKey(ignore: true)
   @override
-  _$KeepItemnCopyWith<_KeepItemn> get copyWith =>
-      __$KeepItemnCopyWithImpl<_KeepItemn>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_KeepItemnCopyWith<_$_KeepItemn> get copyWith =>
+      __$$_KeepItemnCopyWithImpl<_$_KeepItemn>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KeepItemnToJson(this);
+    return _$$_KeepItemnToJson(
+      this,
+    );
   }
 }
 
@@ -215,17 +221,17 @@ abstract class _KeepItemn implements KeepItem {
       _$_KeepItemn.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String? get imageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl;
   @override
-  String get targetUrl => throw _privateConstructorUsedError;
+  String get targetUrl;
   @override
-  DateTime get createAt => throw _privateConstructorUsedError;
+  DateTime get createAt;
   @override
   @JsonKey(ignore: true)
-  _$KeepItemnCopyWith<_KeepItemn> get copyWith =>
+  _$$_KeepItemnCopyWith<_$_KeepItemn> get copyWith =>
       throw _privateConstructorUsedError;
 }
