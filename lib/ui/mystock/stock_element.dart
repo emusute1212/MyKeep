@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
 
@@ -33,9 +36,9 @@ class StockElement extends HookConsumerWidget {
                   height: 120,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(
-                    item.imageUrl ?? "",
-                    errorListener: () {
+                  image: getImageProviderFromUrl(
+                    item.imageUrl,
+                    () {
                       print("error");
                     },
                   ),
@@ -103,5 +106,24 @@ class StockElement extends HookConsumerWidget {
         ],
       ),
     );
+  }
+
+  ImageProvider getImageProviderFromUrl(
+    String? imageUrl,
+    Function() onError,
+  ) {
+    ImageProvider imageProvider;
+    if (imageUrl != null) {
+      imageProvider = CachedNetworkImageProvider(
+        imageUrl,
+        errorListener: onError,
+      );
+    } else {
+      final int number = Random().nextInt(5) + 1;
+      imageProvider = Svg(
+        "assets/default_$number.svg",
+      );
+    }
+    return imageProvider;
   }
 }

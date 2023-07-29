@@ -18,7 +18,7 @@ class MyStockEmpty extends HookConsumerWidget {
             top: 12,
           ),
           child: Text(
-            "No Keep...",
+            "キープしている物はありません",
             style: TextStyle(
               fontSize: 20,
               color: Colors.black,

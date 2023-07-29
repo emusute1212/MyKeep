@@ -65,8 +65,8 @@ class AddingPage extends HookConsumerWidget {
                         Navigator.pop(context);
                         if (isSuccess) return;
                         const ErrorDialog(
-                          title: "サイトを読み込むことができませんでした。",
-                          message: "画像、タイトルを読み込むことができませんでしたので、\n初期値で登録いたしました。",
+                          title: "サイトを読み込むことができませんでした",
+                          message: "画像とタイトルを読み込むことができませんでした。",
                           closeButtonLabel: "はい",
                         ).show(context);
                       });
@@ -113,7 +113,7 @@ class AddingPage extends HookConsumerWidget {
                   if (state.isPossibleToSave) {
                     return null;
                   }
-                  return "URLの形式になるようにしてください";
+                  return "URLを入力してください";
                 },
                 decoration: InputDecoration(
                   fillColor: Colors.white,
@@ -125,7 +125,7 @@ class AddingPage extends HookConsumerWidget {
                       color: Colors.white,
                     ),
                   ),
-                  hintText: "URL",
+                  hintText: "URLを入力",
                   contentPadding: const EdgeInsets.only(
                     top: 12,
                     bottom: 12,
