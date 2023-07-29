@@ -15,10 +15,10 @@ class MyStockEmpty extends HookConsumerWidget {
         ),
         const Padding(
           padding: EdgeInsets.only(
-            top: 24,
+            top: 12,
           ),
           child: Text(
-            "キープしている物はありません",
+            "No Keep...",
             style: TextStyle(
               fontSize: 20,
               color: Colors.black,
@@ -31,7 +31,7 @@ class MyStockEmpty extends HookConsumerWidget {
             top: 12,
           ),
           child: Text(
-            "右上の＋から追加できます",
+            "右上のプラスボタンから追加できます",
             style: TextStyle(
               fontSize: 14,
               color: Color(0x993C3C43),
