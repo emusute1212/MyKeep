@@ -9,7 +9,7 @@ jobs:
       - name: Install asdf & tools
         uses: asdf-vm/actions/install@v2
       - name: Check Flutter version
-        uses: flutter --version
+        run: flutter --version
       - name: Download Flutter packages
         run: flutter pub get
       - name: dart format
