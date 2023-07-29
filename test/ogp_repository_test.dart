@@ -5,10 +5,12 @@ import 'package:mykeep/data/repository/ogp_repository.dart';
 void main() {
   test('OGPが存在するサイトのテスト', () async {
     final ogpRepository = OgpRepository();
-    final result = await ogpRepository.loadOgpEntity("https://qiita.com/emusute1212");
+    final result =
+        await ogpRepository.loadOgpEntity("https://qiita.com/emusute1212");
 
     expect(result.title, '@emusute1212のマイページ - Qiita');
-    expect(result.imageUrl, 'https://cdn.qiita.com/assets/qiita-ogp-3b6fcfdd74755a85107071ffc3155898.png');
+    expect(result.imageUrl,
+        'https://cdn.qiita.com/assets/qiita-ogp-3b6fcfdd74755a85107071ffc3155898.png');
   });
   test('OGPが存在しないサイトのテスト', () async {
     final ogpRepository = OgpRepository();

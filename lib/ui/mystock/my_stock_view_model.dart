@@ -15,9 +15,7 @@ class MyStockViewModel extends StateNotifier<MyStockState> {
 
   void init() {
     _usecase.observeKeepItem().listen((event) {
-      state = state.copyWith(
-        items: event
-      );
+      state = state.copyWith(items: event);
     });
   }
 

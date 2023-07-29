@@ -4,7 +4,7 @@ import 'package:mykeep/usecase/my_keep_usecase.dart';
 import 'package:string_validator/string_validator.dart';
 
 final addingViewModelProvider =
-StateNotifierProvider<AddingViewModel, AddingState>(
+    StateNotifierProvider<AddingViewModel, AddingState>(
         (ref) => AddingViewModel(ref.read(myKeepUsecaseyProvider)));
 
 class AddingViewModel extends StateNotifier<AddingState> {
@@ -12,10 +12,10 @@ class AddingViewModel extends StateNotifier<AddingState> {
 
   AddingViewModel(this._usecase)
       : super(const AddingState(
-    url: "",
-    title: "",
-    isPossibleToSave: false,
-  ));
+          url: "",
+          title: "",
+          isPossibleToSave: false,
+        ));
 
   Future<bool> addKeepItem(String targetUrl) async {
     bool isSuccess = await _usecase.addKeepItem(targetUrl);

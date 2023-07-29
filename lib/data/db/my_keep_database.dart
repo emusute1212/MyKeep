@@ -24,7 +24,6 @@ class StockItems extends Table {
 
 @DriftDatabase(tables: [StockItems])
 class MyKeepDatabase extends _$MyKeepDatabase {
-
   MyKeepDatabase() : super(_openConnection());
 
   MyKeepDatabase.withQueryExecutor(QueryExecutor e) : super(e);
