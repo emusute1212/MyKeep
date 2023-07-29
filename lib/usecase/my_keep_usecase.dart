@@ -5,10 +5,8 @@ import 'package:mykeep/data/repository/keep_item_repository.dart';
 import 'package:mykeep/data/repository/ogp_repository.dart';
 
 final myKeepUsecaseyProvider = Provider((ref) {
-  final Reader reader = ref.read;
-
   return MyKeepUsecase(
-      reader(keepItemRepositoryProvider), reader(ogpRepositoryProvider));
+      ref.read(keepItemRepositoryProvider), ref.read(ogpRepositoryProvider));
 });
 
 class MyKeepUsecase {

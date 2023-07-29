@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
@@ -32,8 +33,11 @@ class StockElement extends HookConsumerWidget {
                   height: 120,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  image: NetworkImage(
+                  image: CachedNetworkImageProvider(
                     item.imageUrl ?? "",
+                    errorListener: () {
+                      print("error");
+                    },
                   ),
                 ),
                 Container(
