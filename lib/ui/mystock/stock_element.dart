@@ -38,8 +38,8 @@ class StockElement extends HookConsumerWidget {
                   fit: BoxFit.cover,
                   image: getImageProviderFromUrl(
                     item.imageUrl,
-                    () {
-                      print("error");
+                    (err) {
+                      print("getImageProviderFromUrl error: $err");
                     },
                   ),
                 ),
@@ -110,7 +110,7 @@ class StockElement extends HookConsumerWidget {
 
   ImageProvider getImageProviderFromUrl(
     String? imageUrl,
-    Function() onError,
+    Function(Object) onError,
   ) {
     ImageProvider imageProvider;
     if (imageUrl != null) {

@@ -20,15 +20,19 @@ class ShareViewModel extends StateNotifier<ShareState> {
         ));
 
   void init() {
-    _intentDataStreamSubscription =
-        ReceiveSharingIntent.getTextStream().listen((String value) {
-      _onNotifyUrl(value);
+    _intentDataStreamSubscription = ReceiveSharingIntent.getMediaStream()
+        .listen((List<SharedMediaFile> stream) {
+      for (var value in stream) {
+        _onNotifyUrl(value.message);
+      }
     }, onError: (err) {
       print("getLinkStream error: $err");
     });
 
-    ReceiveSharingIntent.getInitialText().then((value) {
-      _onNotifyUrl(value);
+    ReceiveSharingIntent.getInitialMedia().then((media) {
+      for (var value in media) {
+        _onNotifyUrl(value.message);
+      }
     });
   }
 
