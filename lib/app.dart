@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_page.dart';
 import 'package:mykeep/ui/dialog/error_dialog.dart';
+import 'package:mykeep/ui/menu/menus.dart';
 import 'package:mykeep/ui/mystock/my_stock_empty.dart';
 import 'package:mykeep/ui/mystock/my_stock_page.dart';
 import 'package:mykeep/ui/mystock/my_stock_view_model.dart';
@@ -63,6 +64,8 @@ class App extends HookConsumerWidget {
               SliverAppBar(
                 backgroundColor: const Color(0xFFF8F8F8),
                 expandedHeight: 126,
+                stretch: true,
+                iconTheme: IconThemeData(color: Colors.black),
                 actions: [
                   Padding(
                     padding: const EdgeInsets.all(8),
@@ -72,7 +75,6 @@ class App extends HookConsumerWidget {
                         AddingPage.showAddingPage(context);
                       },
                       icon: const Icon(Icons.add_sharp),
-                      color: Colors.black,
                       iconSize: 30,
                     ),
                   ),
@@ -113,8 +115,32 @@ class App extends HookConsumerWidget {
                     ),
             ],
           ),
+          drawer: Drawer(
+            child: ListView(
+              children: Menus.values
+                  .map((e) => ListTile(
+                        title: Text(e.displayName),
+                        onTap: () {
+                          Navigator.pop(context);
+                          _showMenuContent(context, e);
+                        },
+                      ))
+                  .toList(),
+            ),
+          ),
         );
       }),
     );
+  }
+
+  void _showMenuContent(BuildContext context, Menus menu) {
+    switch (menu) {
+      case Menus.legal:
+        showAboutDialog(
+          context: context,
+          applicationIcon: const Icon(Icons.info),
+          applicationName: 'My Keep',
+        );
+    }
   }
 }
