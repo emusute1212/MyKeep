@@ -94,19 +94,46 @@ class App extends HookConsumerWidget {
                       ),
                     ),
                   ],
-                  flexibleSpace: const FlexibleSpaceBar(
-                    titlePadding: EdgeInsets.only(
+                  flexibleSpace: FlexibleSpaceBar(
+                    titlePadding: const EdgeInsets.only(
                       right: 16,
                       left: 16,
                       bottom: 7,
                     ),
-                    title: Text(
-                      "マイキープ",
-                      style: TextStyle(
-                        color: Color(0xFF000000),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
+                    title: Row(
+                      children: [
+                        const Text(
+                          "マイキープ",
+                          style: TextStyle(
+                            color: Color(0xFF000000),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Wrap(children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF09BC8A),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Text(
+                              state.items.length.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ])
+                      ],
                     ),
                   ),
                 ),
