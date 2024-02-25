@@ -23,7 +23,7 @@ class ShareViewModel extends StateNotifier<ShareState> {
     _intentDataStreamSubscription = ReceiveSharingIntent.getMediaStream()
         .listen((List<SharedMediaFile> stream) {
       for (var value in stream) {
-        _onNotifyUrl(value.message);
+        _onNotifyUrl(value.path);
       }
     }, onError: (err) {
       print("getLinkStream error: $err");
@@ -31,13 +31,13 @@ class ShareViewModel extends StateNotifier<ShareState> {
 
     ReceiveSharingIntent.getInitialMedia().then((media) {
       for (var value in media) {
-        _onNotifyUrl(value.message);
+        _onNotifyUrl(value.path);
       }
     });
   }
 
   void _onNotifyUrl(String? url) async {
-    print("Shareed Url is `$url`");
+    print("Shared Url is `$url`");
     if (url == null) return;
     _usecase.addKeepItem(url).then((isSuccess) {
       state = state.copyWith(

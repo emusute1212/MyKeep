@@ -31,12 +31,9 @@ class MyKeepUsecase {
           ogpEntity.title, ogpEntity.imageUrl, targetUrl, DateTime.now());
       return true;
     } catch (e) {
-      // MEMO: エラー時にデフォルト値で登録する処理。
-      //   エラー時は登録したいユースケースは稀だと考え、一旦なしとする。
-      //   意見が多い場合は復活させる。
-
-      // _keepItemRepository.addKeepItem(
-      //     targetUrl, null, targetUrl, DateTime.now());
+      print("Error get OGP: ${e.toString()}");
+      _keepItemRepository.addKeepItem(
+          targetUrl, null, targetUrl, DateTime.now());
       return false;
     }
   }

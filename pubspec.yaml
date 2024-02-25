@@ -49,7 +49,7 @@ dependencies:
   hooks_riverpod: ^2.4.10
 
   # get ogp lib
-  metadata_fetch: ^0.4.0
+  metadata_fetch: ^0.4.1
 
   # freezed
   freezed_annotation: ^2.4.1

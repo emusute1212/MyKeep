@@ -12,7 +12,9 @@ import 'package:mykeep/ui/share/share_view_model.dart';
 import 'package:mykeep/ui/share/state/share_state.dart';
 
 class App extends HookConsumerWidget {
-  const App({Key? key}) : super(key: key);
+  App({super.key});
+
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,10 +36,11 @@ class App extends HookConsumerWidget {
     }, const []);
 
     return MaterialApp(
+      key: _key,
       title: 'My keep',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-          backgroundColor: const Color(0xFFe5e5e5),
+          backgroundColor: const Color(0xFFF1F1F1),
         ),
         fontFamily: ".SF Pro Display",
       ),
@@ -62,19 +65,19 @@ class App extends HookConsumerWidget {
             physics: const BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
-                backgroundColor: const Color(0xFFF8F8F8),
+                backgroundColor: const Color(0xFFF1F1F1),
                 expandedHeight: 126,
                 stretch: true,
-                iconTheme: IconThemeData(color: Colors.black),
+                iconTheme: const IconThemeData(color: Colors.black),
                 actions: [
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: IconButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
-                        AddingPage.showAddingPage(context);
+                        _key.currentState!.openEndDrawer();
                       },
-                      icon: const Icon(Icons.add_sharp),
+                      icon: const Icon(Icons.settings),
                       iconSize: 30,
                     ),
                   ),
@@ -115,7 +118,7 @@ class App extends HookConsumerWidget {
                     ),
             ],
           ),
-          drawer: Drawer(
+          endDrawer: Drawer(
             child: ListView(
               children: Menus.values
                   .map((e) => ListTile(
@@ -127,6 +130,14 @@ class App extends HookConsumerWidget {
                       ))
                   .toList(),
             ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            shape: const CircleBorder(),
+            backgroundColor: const Color(0xFF2D2D2D),
+            onPressed: () {
+              AddingPage.showAddingPage(context);
+            },
+            child: const Icon(Icons.add_sharp),
           ),
         );
       }),
