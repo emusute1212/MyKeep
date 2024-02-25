@@ -37,7 +37,6 @@ class App extends HookConsumerWidget {
     }, const []);
 
     return MaterialApp(
-      key: _key,
       title: 'My keep',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
@@ -62,6 +61,7 @@ class App extends HookConsumerWidget {
           }
         });
         return Scaffold(
+          key: _key,
           body: NotificationListener<UserScrollNotification>(
             onNotification: (notification) {
               if (notification.direction == ScrollDirection.reverse) {
@@ -80,17 +80,15 @@ class App extends HookConsumerWidget {
                   stretch: true,
                   iconTheme: const IconThemeData(color: Colors.black),
                   actions: [
-                    Builder(
-                      builder: (context) => Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {
-                            Scaffold.of(context).openEndDrawer();
-                          },
-                          icon: const Icon(Icons.settings),
-                          iconSize: 30,
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () {
+                          _key.currentState?.openEndDrawer();
+                        },
+                        icon: const Icon(Icons.settings),
+                        iconSize: 30,
                       ),
                     ),
                   ],
