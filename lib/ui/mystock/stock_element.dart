@@ -2,20 +2,23 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:mykeep/data/entity/keep_item.dart';
 
 // TODO デカクラスになっているのでコンポーネントを分ける
 class StockElement extends HookConsumerWidget {
   const StockElement({
-    Key? key,
+    super.key,
     required this.item,
     required this.onTapItem,
     required this.onTapItemCheck,
-  }) : super(key: key);
+  });
 
   final KeepItem item;
   final Function(KeepItem) onTapItem;
   final Function(KeepItem) onTapItemCheck;
+
+  static final _displayDateFormatter = DateFormat('yyyy年MM月dd日');
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -70,7 +73,7 @@ class StockElement extends HookConsumerWidget {
                     bottom: 8,
                   ),
                   child: Text(
-                    item.createAt.toString(),
+                    _displayDateFormatter.format(item.createAt),
                     style: const TextStyle(
                       color: Color(0xFF898989),
                       fontSize: 11,
