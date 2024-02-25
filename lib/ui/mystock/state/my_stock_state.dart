@@ -8,6 +8,7 @@ part 'my_stock_state.g.dart';
 class MyStockState with _$MyStockState {
   const factory MyStockState({
     required List<KeepItem> items,
+    required bool isFabVisible,
   }) = _MyStockState;
 
   factory MyStockState.fromJson(Map<String, Object?> json) =>

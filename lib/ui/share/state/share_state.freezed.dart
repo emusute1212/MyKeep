@@ -12,7 +12,7 @@ part of 'share_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ShareState _$ShareStateFromJson(Map<String, dynamic> json) {
   return _ShareState.fromJson(json);
@@ -68,22 +68,22 @@ class _$ShareStateCopyWithImpl<$Res, $Val extends ShareState>
 }
 
 /// @nodoc
-abstract class _$$_ShareStateCopyWith<$Res>
+abstract class _$$ShareStateImplCopyWith<$Res>
     implements $ShareStateCopyWith<$Res> {
-  factory _$$_ShareStateCopyWith(
-          _$_ShareState value, $Res Function(_$_ShareState) then) =
-      __$$_ShareStateCopyWithImpl<$Res>;
+  factory _$$ShareStateImplCopyWith(
+          _$ShareStateImpl value, $Res Function(_$ShareStateImpl) then) =
+      __$$ShareStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? url, bool? isSuccess});
 }
 
 /// @nodoc
-class __$$_ShareStateCopyWithImpl<$Res>
-    extends _$ShareStateCopyWithImpl<$Res, _$_ShareState>
-    implements _$$_ShareStateCopyWith<$Res> {
-  __$$_ShareStateCopyWithImpl(
-      _$_ShareState _value, $Res Function(_$_ShareState) _then)
+class __$$ShareStateImplCopyWithImpl<$Res>
+    extends _$ShareStateCopyWithImpl<$Res, _$ShareStateImpl>
+    implements _$$ShareStateImplCopyWith<$Res> {
+  __$$ShareStateImplCopyWithImpl(
+      _$ShareStateImpl _value, $Res Function(_$ShareStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_ShareStateCopyWithImpl<$Res>
     Object? url = freezed,
     Object? isSuccess = freezed,
   }) {
-    return _then(_$_ShareState(
+    return _then(_$ShareStateImpl(
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_ShareStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShareState implements _ShareState {
-  const _$_ShareState({required this.url, required this.isSuccess});
+class _$ShareStateImpl implements _ShareState {
+  const _$ShareStateImpl({required this.url, required this.isSuccess});
 
-  factory _$_ShareState.fromJson(Map<String, dynamic> json) =>
-      _$$_ShareStateFromJson(json);
+  factory _$ShareStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShareStateImplFromJson(json);
 
   @override
   final String? url;
@@ -124,10 +124,10 @@ class _$_ShareState implements _ShareState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShareState &&
+            other is _$ShareStateImpl &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.isSuccess, isSuccess) ||
                 other.isSuccess == isSuccess));
@@ -140,12 +140,12 @@ class _$_ShareState implements _ShareState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShareStateCopyWith<_$_ShareState> get copyWith =>
-      __$$_ShareStateCopyWithImpl<_$_ShareState>(this, _$identity);
+  _$$ShareStateImplCopyWith<_$ShareStateImpl> get copyWith =>
+      __$$ShareStateImplCopyWithImpl<_$ShareStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShareStateToJson(
+    return _$$ShareStateImplToJson(
       this,
     );
   }
@@ -154,10 +154,10 @@ class _$_ShareState implements _ShareState {
 abstract class _ShareState implements ShareState {
   const factory _ShareState(
       {required final String? url,
-      required final bool? isSuccess}) = _$_ShareState;
+      required final bool? isSuccess}) = _$ShareStateImpl;
 
   factory _ShareState.fromJson(Map<String, dynamic> json) =
-      _$_ShareState.fromJson;
+      _$ShareStateImpl.fromJson;
 
   @override
   String? get url;
@@ -165,6 +165,6 @@ abstract class _ShareState implements ShareState {
   bool? get isSuccess;
   @override
   @JsonKey(ignore: true)
-  _$$_ShareStateCopyWith<_$_ShareState> get copyWith =>
+  _$$ShareStateImplCopyWith<_$ShareStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

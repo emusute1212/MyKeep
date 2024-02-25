@@ -6,12 +6,13 @@ part of 'ogp_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OgpEntity _$$_OgpEntityFromJson(Map<String, dynamic> json) => _$_OgpEntity(
+_$OgpEntityImpl _$$OgpEntityImplFromJson(Map<String, dynamic> json) =>
+    _$OgpEntityImpl(
       title: json['title'] as String,
       imageUrl: json['imageUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_OgpEntityToJson(_$_OgpEntity instance) =>
+Map<String, dynamic> _$$OgpEntityImplToJson(_$OgpEntityImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'imageUrl': instance.imageUrl,

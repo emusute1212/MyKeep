@@ -6,14 +6,14 @@ part of 'adding_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AddingState _$$_AddingStateFromJson(Map<String, dynamic> json) =>
-    _$_AddingState(
+_$AddingStateImpl _$$AddingStateImplFromJson(Map<String, dynamic> json) =>
+    _$AddingStateImpl(
       url: json['url'] as String,
       title: json['title'] as String,
       isPossibleToSave: json['isPossibleToSave'] as bool,
     );
 
-Map<String, dynamic> _$$_AddingStateToJson(_$_AddingState instance) =>
+Map<String, dynamic> _$$AddingStateImplToJson(_$AddingStateImpl instance) =>
     <String, dynamic>{
       'url': instance.url,
       'title': instance.title,

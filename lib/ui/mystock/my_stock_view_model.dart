@@ -11,12 +11,24 @@ final myStockViewModelProvider =
 class MyStockViewModel extends StateNotifier<MyStockState> {
   final MyKeepUsecase _usecase;
 
-  MyStockViewModel(this._usecase) : super(const MyStockState(items: []));
+  MyStockViewModel(this._usecase)
+      : super(const MyStockState(
+          items: [],
+          isFabVisible: true,
+        ));
 
   void init() {
     _usecase.observeKeepItem().listen((event) {
       state = state.copyWith(items: event);
     });
+  }
+
+  void onStartScrollToForward() {
+    state = state.copyWith(isFabVisible: true);
+  }
+
+  void onStartScrollToRevers() {
+    state = state.copyWith(isFabVisible: false);
   }
 
   void deleteStock(KeepItem item) {

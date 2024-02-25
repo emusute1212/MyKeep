@@ -12,7 +12,7 @@ part of 'my_stock_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MyStockState _$MyStockStateFromJson(Map<String, dynamic> json) {
   return _MyStockState.fromJson(json);
@@ -21,6 +21,7 @@ MyStockState _$MyStockStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MyStockState {
   List<KeepItem> get items => throw _privateConstructorUsedError;
+  bool get isFabVisible => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $MyStockStateCopyWith<$Res> {
           MyStockState value, $Res Function(MyStockState) then) =
       _$MyStockStateCopyWithImpl<$Res, MyStockState>;
   @useResult
-  $Res call({List<KeepItem> items});
+  $Res call({List<KeepItem> items, bool isFabVisible});
 }
 
 /// @nodoc
@@ -51,56 +52,68 @@ class _$MyStockStateCopyWithImpl<$Res, $Val extends MyStockState>
   @override
   $Res call({
     Object? items = null,
+    Object? isFabVisible = null,
   }) {
     return _then(_value.copyWith(
       items: null == items
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<KeepItem>,
+      isFabVisible: null == isFabVisible
+          ? _value.isFabVisible
+          : isFabVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_MyStockStateCopyWith<$Res>
+abstract class _$$MyStockStateImplCopyWith<$Res>
     implements $MyStockStateCopyWith<$Res> {
-  factory _$$_MyStockStateCopyWith(
-          _$_MyStockState value, $Res Function(_$_MyStockState) then) =
-      __$$_MyStockStateCopyWithImpl<$Res>;
+  factory _$$MyStockStateImplCopyWith(
+          _$MyStockStateImpl value, $Res Function(_$MyStockStateImpl) then) =
+      __$$MyStockStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<KeepItem> items});
+  $Res call({List<KeepItem> items, bool isFabVisible});
 }
 
 /// @nodoc
-class __$$_MyStockStateCopyWithImpl<$Res>
-    extends _$MyStockStateCopyWithImpl<$Res, _$_MyStockState>
-    implements _$$_MyStockStateCopyWith<$Res> {
-  __$$_MyStockStateCopyWithImpl(
-      _$_MyStockState _value, $Res Function(_$_MyStockState) _then)
+class __$$MyStockStateImplCopyWithImpl<$Res>
+    extends _$MyStockStateCopyWithImpl<$Res, _$MyStockStateImpl>
+    implements _$$MyStockStateImplCopyWith<$Res> {
+  __$$MyStockStateImplCopyWithImpl(
+      _$MyStockStateImpl _value, $Res Function(_$MyStockStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? items = null,
+    Object? isFabVisible = null,
   }) {
-    return _then(_$_MyStockState(
+    return _then(_$MyStockStateImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<KeepItem>,
+      isFabVisible: null == isFabVisible
+          ? _value.isFabVisible
+          : isFabVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_MyStockState implements _MyStockState {
-  const _$_MyStockState({required final List<KeepItem> items}) : _items = items;
+class _$MyStockStateImpl implements _MyStockState {
+  const _$MyStockStateImpl(
+      {required final List<KeepItem> items, required this.isFabVisible})
+      : _items = items;
 
-  factory _$_MyStockState.fromJson(Map<String, dynamic> json) =>
-      _$$_MyStockStateFromJson(json);
+  factory _$MyStockStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MyStockStateImplFromJson(json);
 
   final List<KeepItem> _items;
   @override
@@ -111,48 +124,56 @@ class _$_MyStockState implements _MyStockState {
   }
 
   @override
+  final bool isFabVisible;
+
+  @override
   String toString() {
-    return 'MyStockState(items: $items)';
+    return 'MyStockState(items: $items, isFabVisible: $isFabVisible)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MyStockState &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            other is _$MyStockStateImpl &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.isFabVisible, isFabVisible) ||
+                other.isFabVisible == isFabVisible));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_items), isFabVisible);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MyStockStateCopyWith<_$_MyStockState> get copyWith =>
-      __$$_MyStockStateCopyWithImpl<_$_MyStockState>(this, _$identity);
+  _$$MyStockStateImplCopyWith<_$MyStockStateImpl> get copyWith =>
+      __$$MyStockStateImplCopyWithImpl<_$MyStockStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MyStockStateToJson(
+    return _$$MyStockStateImplToJson(
       this,
     );
   }
 }
 
 abstract class _MyStockState implements MyStockState {
-  const factory _MyStockState({required final List<KeepItem> items}) =
-      _$_MyStockState;
+  const factory _MyStockState(
+      {required final List<KeepItem> items,
+      required final bool isFabVisible}) = _$MyStockStateImpl;
 
   factory _MyStockState.fromJson(Map<String, dynamic> json) =
-      _$_MyStockState.fromJson;
+      _$MyStockStateImpl.fromJson;
 
   @override
   List<KeepItem> get items;
   @override
+  bool get isFabVisible;
+  @override
   @JsonKey(ignore: true)
-  _$$_MyStockStateCopyWith<_$_MyStockState> get copyWith =>
+  _$$MyStockStateImplCopyWith<_$MyStockStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

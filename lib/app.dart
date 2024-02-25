@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mykeep/ui/adding/adding_page.dart';
@@ -61,64 +62,74 @@ class App extends HookConsumerWidget {
           }
         });
         return Scaffold(
-          body: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                backgroundColor: const Color(0xFFF1F1F1),
-                expandedHeight: 126,
-                stretch: true,
-                iconTheme: const IconThemeData(color: Colors.black),
-                actions: [
-                  Builder(
-                    builder: (context) => Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          Scaffold.of(context).openEndDrawer();
-                        },
-                        icon: const Icon(Icons.settings),
-                        iconSize: 30,
+          body: NotificationListener<UserScrollNotification>(
+            onNotification: (notification) {
+              if (notification.direction == ScrollDirection.reverse) {
+                myStockViewModel.onStartScrollToRevers();
+              } else if (notification.direction == ScrollDirection.forward) {
+                myStockViewModel.onStartScrollToForward();
+              }
+              return true;
+            },
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  backgroundColor: const Color(0xFFF1F1F1),
+                  expandedHeight: 126,
+                  stretch: true,
+                  iconTheme: const IconThemeData(color: Colors.black),
+                  actions: [
+                    Builder(
+                      builder: (context) => Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            Scaffold.of(context).openEndDrawer();
+                          },
+                          icon: const Icon(Icons.settings),
+                          iconSize: 30,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-                flexibleSpace: const FlexibleSpaceBar(
-                  titlePadding: EdgeInsets.only(
-                    right: 16,
-                    left: 16,
-                    bottom: 7,
-                  ),
-                  title: Text(
-                    "マイキープ",
-                    style: TextStyle(
-                      color: Color(0xFF000000),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+                  ],
+                  flexibleSpace: const FlexibleSpaceBar(
+                    titlePadding: EdgeInsets.only(
+                      right: 16,
+                      left: 16,
+                      bottom: 7,
+                    ),
+                    title: Text(
+                      "マイキープ",
+                      style: TextStyle(
+                        color: Color(0xFF000000),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              state.items.isEmpty
-                  ? const SliverToBoxAdapter(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: 88,
+                state.items.isEmpty
+                    ? const SliverToBoxAdapter(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: 88,
+                          ),
+                          child: MyStockEmpty(),
                         ),
-                        child: MyStockEmpty(),
+                      )
+                    : const SliverPadding(
+                        sliver: MyStockPage(),
+                        padding: EdgeInsets.only(
+                          top: 22,
+                          left: 16,
+                          right: 16,
+                          bottom: 22,
+                        ),
                       ),
-                    )
-                  : const SliverPadding(
-                      sliver: MyStockPage(),
-                      padding: EdgeInsets.only(
-                        top: 22,
-                        left: 16,
-                        right: 16,
-                        bottom: 22,
-                      ),
-                    ),
-            ],
+              ],
+            ),
           ),
           endDrawer: Drawer(
             child: ListView(
@@ -133,14 +144,16 @@ class App extends HookConsumerWidget {
                   .toList(),
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            shape: const CircleBorder(),
-            backgroundColor: const Color(0xFF2D2D2D),
-            onPressed: () {
-              AddingPage.showAddingPage(context);
-            },
-            child: const Icon(Icons.add_sharp),
-          ),
+          floatingActionButton: state.isFabVisible
+              ? FloatingActionButton(
+                  shape: const CircleBorder(),
+                  backgroundColor: const Color(0xFF2D2D2D),
+                  onPressed: () {
+                    AddingPage.showAddingPage(context);
+                  },
+                  child: const Icon(Icons.add_sharp),
+                )
+              : null,
         );
       }),
     );

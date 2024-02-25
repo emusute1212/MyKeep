@@ -12,7 +12,7 @@ part of 'adding_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AddingState _$AddingStateFromJson(Map<String, dynamic> json) {
   return _AddingState.fromJson(json);
@@ -74,22 +74,22 @@ class _$AddingStateCopyWithImpl<$Res, $Val extends AddingState>
 }
 
 /// @nodoc
-abstract class _$$_AddingStateCopyWith<$Res>
+abstract class _$$AddingStateImplCopyWith<$Res>
     implements $AddingStateCopyWith<$Res> {
-  factory _$$_AddingStateCopyWith(
-          _$_AddingState value, $Res Function(_$_AddingState) then) =
-      __$$_AddingStateCopyWithImpl<$Res>;
+  factory _$$AddingStateImplCopyWith(
+          _$AddingStateImpl value, $Res Function(_$AddingStateImpl) then) =
+      __$$AddingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String url, String title, bool isPossibleToSave});
 }
 
 /// @nodoc
-class __$$_AddingStateCopyWithImpl<$Res>
-    extends _$AddingStateCopyWithImpl<$Res, _$_AddingState>
-    implements _$$_AddingStateCopyWith<$Res> {
-  __$$_AddingStateCopyWithImpl(
-      _$_AddingState _value, $Res Function(_$_AddingState) _then)
+class __$$AddingStateImplCopyWithImpl<$Res>
+    extends _$AddingStateCopyWithImpl<$Res, _$AddingStateImpl>
+    implements _$$AddingStateImplCopyWith<$Res> {
+  __$$AddingStateImplCopyWithImpl(
+      _$AddingStateImpl _value, $Res Function(_$AddingStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_AddingStateCopyWithImpl<$Res>
     Object? title = null,
     Object? isPossibleToSave = null,
   }) {
-    return _then(_$_AddingState(
+    return _then(_$AddingStateImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -118,12 +118,12 @@ class __$$_AddingStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AddingState implements _AddingState {
-  const _$_AddingState(
+class _$AddingStateImpl implements _AddingState {
+  const _$AddingStateImpl(
       {required this.url, required this.title, required this.isPossibleToSave});
 
-  factory _$_AddingState.fromJson(Map<String, dynamic> json) =>
-      _$$_AddingStateFromJson(json);
+  factory _$AddingStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddingStateImplFromJson(json);
 
   @override
   final String url;
@@ -138,10 +138,10 @@ class _$_AddingState implements _AddingState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddingState &&
+            other is _$AddingStateImpl &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.isPossibleToSave, isPossibleToSave) ||
@@ -155,12 +155,12 @@ class _$_AddingState implements _AddingState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddingStateCopyWith<_$_AddingState> get copyWith =>
-      __$$_AddingStateCopyWithImpl<_$_AddingState>(this, _$identity);
+  _$$AddingStateImplCopyWith<_$AddingStateImpl> get copyWith =>
+      __$$AddingStateImplCopyWithImpl<_$AddingStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddingStateToJson(
+    return _$$AddingStateImplToJson(
       this,
     );
   }
@@ -170,10 +170,10 @@ abstract class _AddingState implements AddingState {
   const factory _AddingState(
       {required final String url,
       required final String title,
-      required final bool isPossibleToSave}) = _$_AddingState;
+      required final bool isPossibleToSave}) = _$AddingStateImpl;
 
   factory _AddingState.fromJson(Map<String, dynamic> json) =
-      _$_AddingState.fromJson;
+      _$AddingStateImpl.fromJson;
 
   @override
   String get url;
@@ -183,6 +183,6 @@ abstract class _AddingState implements AddingState {
   bool get isPossibleToSave;
   @override
   @JsonKey(ignore: true)
-  _$$_AddingStateCopyWith<_$_AddingState> get copyWith =>
+  _$$AddingStateImplCopyWith<_$AddingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

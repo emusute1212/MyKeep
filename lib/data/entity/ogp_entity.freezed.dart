@@ -12,7 +12,7 @@ part of 'ogp_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 OgpEntity _$OgpEntityFromJson(Map<String, dynamic> json) {
   return _OgpEntity.fromJson(json);
@@ -67,21 +67,22 @@ class _$OgpEntityCopyWithImpl<$Res, $Val extends OgpEntity>
 }
 
 /// @nodoc
-abstract class _$$_OgpEntityCopyWith<$Res> implements $OgpEntityCopyWith<$Res> {
-  factory _$$_OgpEntityCopyWith(
-          _$_OgpEntity value, $Res Function(_$_OgpEntity) then) =
-      __$$_OgpEntityCopyWithImpl<$Res>;
+abstract class _$$OgpEntityImplCopyWith<$Res>
+    implements $OgpEntityCopyWith<$Res> {
+  factory _$$OgpEntityImplCopyWith(
+          _$OgpEntityImpl value, $Res Function(_$OgpEntityImpl) then) =
+      __$$OgpEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String title, String? imageUrl});
 }
 
 /// @nodoc
-class __$$_OgpEntityCopyWithImpl<$Res>
-    extends _$OgpEntityCopyWithImpl<$Res, _$_OgpEntity>
-    implements _$$_OgpEntityCopyWith<$Res> {
-  __$$_OgpEntityCopyWithImpl(
-      _$_OgpEntity _value, $Res Function(_$_OgpEntity) _then)
+class __$$OgpEntityImplCopyWithImpl<$Res>
+    extends _$OgpEntityCopyWithImpl<$Res, _$OgpEntityImpl>
+    implements _$$OgpEntityImplCopyWith<$Res> {
+  __$$OgpEntityImplCopyWithImpl(
+      _$OgpEntityImpl _value, $Res Function(_$OgpEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +91,7 @@ class __$$_OgpEntityCopyWithImpl<$Res>
     Object? title = null,
     Object? imageUrl = freezed,
   }) {
-    return _then(_$_OgpEntity(
+    return _then(_$OgpEntityImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -105,11 +106,11 @@ class __$$_OgpEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OgpEntity implements _OgpEntity {
-  const _$_OgpEntity({required this.title, required this.imageUrl});
+class _$OgpEntityImpl implements _OgpEntity {
+  const _$OgpEntityImpl({required this.title, required this.imageUrl});
 
-  factory _$_OgpEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_OgpEntityFromJson(json);
+  factory _$OgpEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OgpEntityImplFromJson(json);
 
   @override
   final String title;
@@ -122,10 +123,10 @@ class _$_OgpEntity implements _OgpEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OgpEntity &&
+            other is _$OgpEntityImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl));
@@ -138,12 +139,12 @@ class _$_OgpEntity implements _OgpEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OgpEntityCopyWith<_$_OgpEntity> get copyWith =>
-      __$$_OgpEntityCopyWithImpl<_$_OgpEntity>(this, _$identity);
+  _$$OgpEntityImplCopyWith<_$OgpEntityImpl> get copyWith =>
+      __$$OgpEntityImplCopyWithImpl<_$OgpEntityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OgpEntityToJson(
+    return _$$OgpEntityImplToJson(
       this,
     );
   }
@@ -152,10 +153,10 @@ class _$_OgpEntity implements _OgpEntity {
 abstract class _OgpEntity implements OgpEntity {
   const factory _OgpEntity(
       {required final String title,
-      required final String? imageUrl}) = _$_OgpEntity;
+      required final String? imageUrl}) = _$OgpEntityImpl;
 
   factory _OgpEntity.fromJson(Map<String, dynamic> json) =
-      _$_OgpEntity.fromJson;
+      _$OgpEntityImpl.fromJson;
 
   @override
   String get title;
@@ -163,6 +164,6 @@ abstract class _OgpEntity implements OgpEntity {
   String? get imageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_OgpEntityCopyWith<_$_OgpEntity> get copyWith =>
+  _$$OgpEntityImplCopyWith<_$OgpEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

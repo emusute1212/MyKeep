@@ -12,7 +12,7 @@ part of 'keep_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 KeepItem _$KeepItemFromJson(Map<String, dynamic> json) {
   return _KeepItemn.fromJson(json);
@@ -90,10 +90,11 @@ class _$KeepItemCopyWithImpl<$Res, $Val extends KeepItem>
 }
 
 /// @nodoc
-abstract class _$$_KeepItemnCopyWith<$Res> implements $KeepItemCopyWith<$Res> {
-  factory _$$_KeepItemnCopyWith(
-          _$_KeepItemn value, $Res Function(_$_KeepItemn) then) =
-      __$$_KeepItemnCopyWithImpl<$Res>;
+abstract class _$$KeepItemnImplCopyWith<$Res>
+    implements $KeepItemCopyWith<$Res> {
+  factory _$$KeepItemnImplCopyWith(
+          _$KeepItemnImpl value, $Res Function(_$KeepItemnImpl) then) =
+      __$$KeepItemnImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -105,11 +106,11 @@ abstract class _$$_KeepItemnCopyWith<$Res> implements $KeepItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_KeepItemnCopyWithImpl<$Res>
-    extends _$KeepItemCopyWithImpl<$Res, _$_KeepItemn>
-    implements _$$_KeepItemnCopyWith<$Res> {
-  __$$_KeepItemnCopyWithImpl(
-      _$_KeepItemn _value, $Res Function(_$_KeepItemn) _then)
+class __$$KeepItemnImplCopyWithImpl<$Res>
+    extends _$KeepItemCopyWithImpl<$Res, _$KeepItemnImpl>
+    implements _$$KeepItemnImplCopyWith<$Res> {
+  __$$KeepItemnImplCopyWithImpl(
+      _$KeepItemnImpl _value, $Res Function(_$KeepItemnImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,7 +122,7 @@ class __$$_KeepItemnCopyWithImpl<$Res>
     Object? targetUrl = null,
     Object? createAt = null,
   }) {
-    return _then(_$_KeepItemn(
+    return _then(_$KeepItemnImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -148,16 +149,16 @@ class __$$_KeepItemnCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KeepItemn implements _KeepItemn {
-  const _$_KeepItemn(
+class _$KeepItemnImpl implements _KeepItemn {
+  const _$KeepItemnImpl(
       {required this.id,
       required this.title,
       required this.imageUrl,
       required this.targetUrl,
       required this.createAt});
 
-  factory _$_KeepItemn.fromJson(Map<String, dynamic> json) =>
-      _$$_KeepItemnFromJson(json);
+  factory _$KeepItemnImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KeepItemnImplFromJson(json);
 
   @override
   final int id;
@@ -176,10 +177,10 @@ class _$_KeepItemn implements _KeepItemn {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KeepItemn &&
+            other is _$KeepItemnImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.imageUrl, imageUrl) ||
@@ -198,12 +199,12 @@ class _$_KeepItemn implements _KeepItemn {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KeepItemnCopyWith<_$_KeepItemn> get copyWith =>
-      __$$_KeepItemnCopyWithImpl<_$_KeepItemn>(this, _$identity);
+  _$$KeepItemnImplCopyWith<_$KeepItemnImpl> get copyWith =>
+      __$$KeepItemnImplCopyWithImpl<_$KeepItemnImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KeepItemnToJson(
+    return _$$KeepItemnImplToJson(
       this,
     );
   }
@@ -215,10 +216,10 @@ abstract class _KeepItemn implements KeepItem {
       required final String title,
       required final String? imageUrl,
       required final String targetUrl,
-      required final DateTime createAt}) = _$_KeepItemn;
+      required final DateTime createAt}) = _$KeepItemnImpl;
 
   factory _KeepItemn.fromJson(Map<String, dynamic> json) =
-      _$_KeepItemn.fromJson;
+      _$KeepItemnImpl.fromJson;
 
   @override
   int get id;
@@ -232,6 +233,6 @@ abstract class _KeepItemn implements KeepItem {
   DateTime get createAt;
   @override
   @JsonKey(ignore: true)
-  _$$_KeepItemnCopyWith<_$_KeepItemn> get copyWith =>
+  _$$KeepItemnImplCopyWith<_$KeepItemnImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

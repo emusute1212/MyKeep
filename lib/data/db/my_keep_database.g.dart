@@ -45,9 +45,10 @@ class $StockItemsTable extends StockItems
   List<GeneratedColumn> get $columns =>
       [id, title, imageUrl, targetUrl, createAt];
   @override
-  String get aliasedName => _alias ?? 'stock_items';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'stock_items';
+  String get actualTableName => $name;
+  static const String $name = 'stock_items';
   @override
   VerificationContext validateIntegrity(Insertable<StockItem> instance,
       {bool isInserting = false}) {
