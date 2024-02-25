@@ -91,13 +91,13 @@ class StockElement extends HookConsumerWidget {
               width: 28,
               height: 28,
               decoration: const ShapeDecoration(
-                color: Color(0x809A9A9A),
+                color: Color(0x802D2D2D),
                 shape: CircleBorder(),
               ),
               child: IconButton(
                 splashRadius: 18,
                 padding: EdgeInsets.zero,
-                icon: const Icon(Icons.check),
+                icon: const Icon(Icons.check_rounded),
                 color: Colors.white,
                 iconSize: 18,
                 onPressed: () => onTapItemCheck(item),
