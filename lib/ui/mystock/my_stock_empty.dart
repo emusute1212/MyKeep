@@ -18,7 +18,7 @@ class MyStockEmpty extends HookConsumerWidget {
             top: 12,
           ),
           child: Text(
-            "キープしている物はありません",
+            "キープしよう",
             style: TextStyle(
               fontSize: 20,
               color: Colors.black,
@@ -31,10 +31,10 @@ class MyStockEmpty extends HookConsumerWidget {
             top: 12,
           ),
           child: Text(
-            "右上のプラスボタンから追加できます",
+            "プラスボタンから追加できます",
             style: TextStyle(
               fontSize: 14,
-              color: Color(0x993C3C43),
+              color: Color(0xFF2D2D2D),
               fontWeight: FontWeight.w700,
             ),
           ),

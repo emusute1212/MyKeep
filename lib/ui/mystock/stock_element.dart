@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -119,9 +117,8 @@ class StockElement extends HookConsumerWidget {
         errorListener: onError,
       );
     } else {
-      final int number = Random().nextInt(5) + 1;
-      imageProvider = Svg(
-        "assets/default_$number.svg",
+      imageProvider = const Svg(
+        "assets/default.svg",
       );
     }
     return imageProvider;
