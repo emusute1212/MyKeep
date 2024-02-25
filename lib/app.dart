@@ -70,15 +70,17 @@ class App extends HookConsumerWidget {
                 stretch: true,
                 iconTheme: const IconThemeData(color: Colors.black),
                 actions: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {
-                        _key.currentState!.openEndDrawer();
-                      },
-                      icon: const Icon(Icons.settings),
-                      iconSize: 30,
+                  Builder(
+                    builder: (context) => Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () {
+                          Scaffold.of(context).openEndDrawer();
+                        },
+                        icon: const Icon(Icons.settings),
+                        iconSize: 30,
+                      ),
                     ),
                   ),
                 ],
