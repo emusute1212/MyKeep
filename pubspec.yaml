@@ -18,8 +18,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  flutter: 3.10.6
-  sdk: 3.0.6
+  flutter: 3.19.1
+  sdk: 3.3.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -37,19 +37,19 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # Drift(Moor)
-  drift: ^2.10.0
-  sqlite3_flutter_libs: ^0.5.15
-  path_provider: ^2.0.15
-  path: ^1.8.3
+  drift: ^2.16.0
+  sqlite3_flutter_libs: ^0.5.20
+  path_provider: ^2.1.2
+  path: ^1.9.0
 
   # Flutter hooks
-  flutter_hooks: ^0.20.0
+  flutter_hooks: ^0.20.5
 
   # Riverpod + Flutter Hooks
-  hooks_riverpod: ^2.3.7
+  hooks_riverpod: ^2.4.10
 
   # get ogp lib
-  metadata_fetch: ^0.4.1
+  metadata_fetch: ^0.4.0
 
   # freezed
   freezed_annotation: ^2.4.1
@@ -57,19 +57,19 @@ dependencies:
   json_annotation: ^4.8.1
 
   # StateNotifier
-  state_notifier: ^0.7.2+1
+  state_notifier: ^1.0.0
 
   # UrlLauncher
-  url_launcher: ^6.1.12
+  url_launcher: ^6.2.5
 
   # isURLを利用したい
   string_validator: ^0.3.0
 
   # 共有メニューにこのアプリを増やす
-  receive_sharing_intent: ^1.4.5
+  receive_sharing_intent: ^1.6.7
 
   # place holder images
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.3.1
 
   # SVG overlay_support:
   flutter_svg: ^2.0.7
@@ -84,14 +84,14 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.2
+  flutter_lints: ^3.0.1
 
   # Drift(Moor)
-  drift_dev: ^2.10.0
-  build_runner: ^2.4.6
+  drift_dev: ^2.16.0
+  build_runner: ^2.4.8
 
   # freezed
-  freezed: ^2.4.1
+  freezed: ^2.4.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
