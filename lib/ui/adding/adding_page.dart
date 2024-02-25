@@ -6,8 +6,8 @@ import 'package:mykeep/ui/dialog/error_dialog.dart';
 
 class AddingPage extends HookConsumerWidget {
   const AddingPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,62 +19,63 @@ class AddingPage extends HookConsumerWidget {
       children: [
         Stack(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.blue,
-                    padding: const EdgeInsets.only(
-                      top: 22,
-                      left: 8,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 12,
+                left: 8,
+                right: 8,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blue,
+                      padding: const EdgeInsets.all(8),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      "キャンセル",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    "キャンセル",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w400,
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.blue,
+                      padding: const EdgeInsets.all(8),
+                    ),
+                    onPressed: !state.isPossibleToSave
+                        ? null
+                        : () {
+                            addingViewModel
+                                .addKeepItem(state.url)
+                                .then((isSuccess) {
+                              Navigator.pop(context);
+                              if (isSuccess) return;
+                              const ErrorDialog(
+                                title: "サイトを読み込むことができませんでした",
+                                message: "画像とタイトルを読み込むことができませんでした。",
+                                closeButtonLabel: "はい",
+                              ).show(context);
+                            });
+                          },
+                    child: const Text(
+                      "完了",
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
-                ),
-                TextButton(
-                  child: const Text(
-                    "完了",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.blue,
-                    padding: const EdgeInsets.only(
-                      top: 22,
-                      right: 8,
-                    ),
-                  ),
-                  onPressed: !state.isPossibleToSave
-                      ? null
-                      : () {
-                          addingViewModel
-                              .addKeepItem(state.url)
-                              .then((isSuccess) {
-                            Navigator.pop(context);
-                            if (isSuccess) return;
-                            const ErrorDialog(
-                              title: "サイトを読み込むことができませんでした",
-                              message: "画像とタイトルを読み込むことができませんでした。",
-                              closeButtonLabel: "はい",
-                            ).show(context);
-                          });
-                        },
-                ),
-              ],
+                ],
+              ),
             ),
             Container(
               padding: const EdgeInsets.only(
@@ -82,7 +83,7 @@ class AddingPage extends HookConsumerWidget {
               ),
               alignment: Alignment.center,
               child: const Text(
-                "追加",
+                "新しく追加",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
