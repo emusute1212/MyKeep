@@ -31,7 +31,10 @@ class MyStockViewModel extends StateNotifier<MyStockState> {
     state = state.copyWith(isFabVisible: false);
   }
 
-  void deleteStock(KeepItem item) {
+  void onCheckStock(KeepItem item) {
     _usecase.deleteKeepItem(item);
+    state = state.copyWith(
+      isFabVisible: true,
+    );
   }
 }
