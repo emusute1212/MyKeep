@@ -1,0 +1,27 @@
+name: CD
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install asdf & tools
+        uses: asdf-vm/actions/install@v2
+      - name: Check Flutter version
+        run: flutter --version
+      - name: Download Flutter packages
+        run: flutter pub get
+      - name: Create AAB
+        run: flutter build appbundle
+      - name: Create iOS
+        run: flutter build ipa
+      - name: Artifact builds
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: |
+            build/app/outputs/bundle/release/app-release.aab
+            build/build/ios/ipa

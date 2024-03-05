@@ -1,0 +1,20 @@
+name: CI
+on: push
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get workspace
+        uses: actions/checkout@v2
+      - name: Install asdf & tools
+        uses: asdf-vm/actions/install@v2
+      - name: Check Flutter version
+        run: flutter --version
+      - name: Download Flutter packages
+        run: flutter pub get
+      - name: dart format
+        run: dart format -o none --set-exit-if-changed .
+      - name: Flutter analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+      - name: Flutter test
+        run: flutter test
