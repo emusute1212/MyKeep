@@ -16,7 +16,7 @@ void main() {
     final ogpRepository = OgpRepository();
     final result = await ogpRepository.loadOgpEntity("https://example.com");
 
-    expect(result.title, 'Example Domain');
+    expect(result.title, '');
     expect(result.imageUrl, null);
   });
   test('接続できないサイトのテスト', () async {

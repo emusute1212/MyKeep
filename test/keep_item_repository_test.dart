@@ -4,23 +4,23 @@ import 'package:mykeep/data/db/my_keep_database.dart';
 import 'package:mykeep/data/repository/keep_item_repository.dart';
 
 void main() {
-  late MyKeepDatabase _database;
-  late KeepItemRepository _keepItemRepository;
+  late MyKeepDatabase database;
+  late KeepItemRepository keepItemRepository;
 
   setUp(() {
-    _database = MyKeepDatabase.withQueryExecutor(NativeDatabase.memory());
-    _keepItemRepository = KeepItemRepository(_database);
+    database = MyKeepDatabase.withQueryExecutor(NativeDatabase.memory());
+    keepItemRepository = KeepItemRepository(database);
   });
   tearDown(() async {
-    await _database.close();
+    await database.close();
   });
 
   test('アイテムを追加・見るテスト', () async {
     final currentDate = DateTime.now();
-    await _keepItemRepository.addKeepItem("test1", "https://example.com/images",
+    await keepItemRepository.addKeepItem("test1", "https://example.com/images",
         "https://example.com", currentDate);
 
-    final result = await _keepItemRepository.observeKeepItems().first;
+    final result = await keepItemRepository.observeKeepItems().first;
 
     expect(result.length, 1);
     expect(result.first.title, "test1");
@@ -29,23 +29,23 @@ void main() {
   });
   test('アイテムを削除するテスト', () async {
     final currentDate = DateTime.now();
-    await _keepItemRepository.addKeepItem("test1", "https://example.com/images",
+    await keepItemRepository.addKeepItem("test1", "https://example.com/images",
         "https://example.com", currentDate);
 
-    final result = await _keepItemRepository.observeKeepItems().first;
+    final result = await keepItemRepository.observeKeepItems().first;
 
-    await _keepItemRepository.deleteKeepItem(result.first);
+    await keepItemRepository.deleteKeepItem(result.first);
 
-    final resultAfter = await _keepItemRepository.observeKeepItems().first;
+    final resultAfter = await keepItemRepository.observeKeepItems().first;
 
     expect(resultAfter.length, 0);
   });
   test('アイテムを編集するテスト', () async {
     final currentDate = DateTime.now();
-    await _keepItemRepository.addKeepItem("test1", "https://example.com/images",
+    await keepItemRepository.addKeepItem("test1", "https://example.com/images",
         "https://example.com", currentDate);
 
-    final result = await _keepItemRepository.observeKeepItems().first;
+    final result = await keepItemRepository.observeKeepItems().first;
 
     final updateItem = result.first.copyWith(
       title: "update1",
@@ -53,9 +53,9 @@ void main() {
       targetUrl: "https://example.com/1",
     );
 
-    await _keepItemRepository.updateKeepItem(updateItem);
+    await keepItemRepository.updateKeepItem(updateItem);
 
-    final resultAfter = await _keepItemRepository.observeKeepItems().first;
+    final resultAfter = await keepItemRepository.observeKeepItems().first;
 
     expect(resultAfter.length, 1);
     expect(resultAfter.first.title, "update1");
@@ -64,6 +64,6 @@ void main() {
   });
 
   tearDown(() async {
-    await _database.close();
+    await database.close();
   });
 }
