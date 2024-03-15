@@ -23,6 +23,6 @@ jobs:
       - name: Artifact builds
         uses: actions/upload-artifact@v3
         with:
-          name: code-coverage-report
+          name: android-bundle
           path: |
             build/app/outputs/bundle/release/app-release.aab
