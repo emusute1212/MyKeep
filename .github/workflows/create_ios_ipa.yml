@@ -1,10 +1,10 @@
-name: CD
+name: create_ios_ipa
 on:
   push:
     tags:
       - 'v*'
 jobs:
-  CD:
+  create_ios_ipa:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,14 +14,11 @@ jobs:
         run: flutter --version
       - name: Download Flutter packages
         run: flutter pub get
-      - name: Create AAB
-        run: flutter build appbundle
-      - name: Create iOS
+      - name: Create IPA
         run: flutter build ipa
       - name: Artifact builds
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
           path: |
-            build/app/outputs/bundle/release/app-release.aab
             build/build/ios/ipa

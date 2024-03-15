@@ -1,0 +1,28 @@
+name: create_android_aab
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  create_android_aab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install asdf & tools
+        uses: asdf-vm/actions/install@v2
+      - name: Check Flutter version
+        run: flutter --version
+      - name: Download Flutter packages
+        run: flutter pub get
+      - name: Make signing config
+        run: echo "${{ secrets.SIGNIN_CONFIG_BASE64 }}" | base64 -d > android/signingConfigs.gradle
+      - name: Make keystore file
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/yosuke_release.jks
+      - name: Create AAB
+        run: flutter build appbundle
+      - name: Artifact builds
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: |
+            build/app/outputs/bundle/release/app-release.aab
