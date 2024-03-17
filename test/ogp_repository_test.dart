@@ -16,14 +16,14 @@ void main() {
     final ogpRepository = OgpRepository();
     final result = await ogpRepository.loadOgpEntity("https://example.com");
 
-    expect(result.title, '');
+    expect(result.title, "https://example.com");
     expect(result.imageUrl, null);
   });
   test('接続できないサイトのテスト', () async {
     final ogpRepository = OgpRepository();
     final result = await ogpRepository.loadOgpEntity("あああ");
 
-    expect(result.title, 'Undefined');
+    expect(result.title, 'あああ');
     expect(result.imageUrl, null);
   });
 }
