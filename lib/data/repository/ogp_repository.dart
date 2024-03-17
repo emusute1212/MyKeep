@@ -7,9 +7,6 @@ final ogpRepositoryProvider = Provider((ref) => OgpRepository());
 class OgpRepository {
   Future<OgpEntity> loadOgpEntity(String url) async {
     final data = await OgpDataExtract.execute(url);
-    if (data == null) {
-      return OgpEntity.empty;
-    }
-    return OgpEntity(title: data.title ?? "", imageUrl: data.image);
+    return OgpEntity(title: data?.title ?? url, imageUrl: data?.image);
   }
 }
