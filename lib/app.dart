@@ -190,7 +190,7 @@ class App extends HookConsumerWidget {
         showAboutDialog(
           context: context,
           applicationIcon: const Icon(Icons.info),
-          applicationName: 'My Keep',
+          applicationName: 'マイキー',
         );
     }
   }
